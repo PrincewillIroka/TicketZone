@@ -1,0 +1,41 @@
+header {
+  padding: 20px 15%;
+  background-color: #1e2126;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-pages,
+.nav-controls {
+  display: flex;
+}
+
+.nav-pages li {
+  margin-right: 50px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.search-input {
+  height: 30px;
+  width: 220px;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 0 10px;
+  font-size: 15px;
+}
+
+.nav-controls li:nth-child(2) {
+  margin-left: 30px;
+}
+
+.btn-login {
+  background-color: #f61253;
+  margin-left: 20px;
+  height: 30px;
+  color: #fff;
+  padding: 5px 20px;
+  border-radius: 3px;
+  font-size: 14px;
+}
