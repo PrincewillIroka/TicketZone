@@ -1,5 +1,5 @@
 header {
-  padding: 20px 15%;
+  padding: 20px 10%;
   background-color: #1e2126;
   display: flex;
   justify-content: space-between;
@@ -64,7 +64,7 @@ header {
   flex-direction: column;
   justify-content: center;
   color: #fff;
-  padding: 0 15%;
+  padding: 0 10%;
 }
 
 .banner-title {
@@ -133,4 +133,84 @@ header {
 
 .browse-item {
   font-size: 13px;
+}
+
+.explore-section {
+  padding: 50px 10%;
+}
+
+.explore-tags {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.explore-tag {
+  margin-right: 10px;
+}
+
+.explore-btn {
+  padding: 7px 15px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.explore-btn-active {
+  background-color: #f61253;
+  border: 1px solid #f61253;
+  color: #fff;
+}
+
+.explore-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 25%);
+  column-gap: 40px;
+  row-gap: 40px;
+}
+
+.explore-item {
+  height: 320px;
+  /* border: 1px solid #ccc; */
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.explore-item-wallpaper {
+  height: 70%;
+  margin-bottom: 10px;
+}
+
+.explore-item-img {
+  height: 100%;
+  width: 100%;
+}
+
+.explore-item-title {
+  padding: 0 7px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.explore-item-calendar {
+  padding: 0 7px;
+  margin-bottom: 5px;
+  display: flex;
+}
+
+.explore-item-date {
+  margin-right: 7px;
+}
+
+.explore-item-time {
+  margin-left: 7px;
+}
+
+.explore-item-venue {
+  padding: 0 7px;
+  opacity: 0.5;
 }
