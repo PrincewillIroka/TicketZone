@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { BsFileMusic } from "react-icons/bs";
 import {
@@ -11,6 +11,12 @@ import { GrTechnology } from "react-icons/gr";
 import "./Home.css";
 
 function Home() {
+  const [activeTab, setActiveTab] = useState("most_recent");
+
+  const handleSetActiveTab = (activeTab) => {
+    setActiveTab(activeTab);
+  };
+
   return (
     <div>
       <header>
@@ -86,21 +92,54 @@ function Home() {
           <h1>Explore Events</h1>
           <ul className="explore-tags">
             <li className="explore-tag">
-              <button className="explore-btn explore-btn-active">
+              <button
+                onClick={() => handleSetActiveTab("most_recent")}
+                className={`explore-btn ${
+                  activeTab === "most_recent" && "explore-btn-active"
+                }`}
+              >
                 Most recent
               </button>
             </li>
             <li className="explore-tag">
-              <button className="explore-btn">Trending</button>
+              <button
+                onClick={() => handleSetActiveTab("trending")}
+                className={`explore-btn ${
+                  activeTab === "trending" && "explore-btn-active"
+                }`}
+              >
+                Trending
+              </button>
             </li>
             <li className="explore-tag">
-              <button className="explore-btn">Popular artists</button>
+              <button
+                onClick={() => handleSetActiveTab("popular_artists")}
+                className={`explore-btn ${
+                  activeTab === "popular_artists" && "explore-btn-active"
+                }`}
+              >
+                Popular artists
+              </button>
             </li>
             <li className="explore-tag">
-              <button className="explore-btn">This month</button>
+              <button
+                onClick={() => handleSetActiveTab("this_month")}
+                className={`explore-btn ${
+                  activeTab === "this_month" && "explore-btn-active"
+                }`}
+              >
+                This month
+              </button>
             </li>
             <li className="explore-tag">
-              <button className="explore-btn">Popular locations</button>
+              <button
+                onClick={() => handleSetActiveTab("popular_locations")}
+                className={`explore-btn ${
+                  activeTab === "popular_locations" && "explore-btn-active"
+                }`}
+              >
+                Popular locations
+              </button>
             </li>
           </ul>
           <div className="explore-items">
