@@ -17,6 +17,8 @@ function Home() {
     setActiveTab(activeTab);
   };
 
+  const handleSetCategory = (category) => {};
+
   return (
     <div>
       <header>
@@ -51,37 +53,55 @@ function Home() {
           </div>
         </div>
         <div className="browse-section">
-          <div className="browse-category">
+          <div
+            className="browse-category"
+            onClick={() => handleSetCategory("")}
+          >
             <div className="browse-content">
               <BsFileMusic className="browse-icon" />
             </div>
             <span className="browse-item">Music</span>
           </div>
-          <div className="browse-category">
+          <div
+            className="browse-category"
+            onClick={() => handleSetCategory("")}
+          >
             <div className="browse-content">
               <MdOutlineSportsSoccer className="browse-icon" />
             </div>
             <span className="browse-item">Sports</span>
           </div>
-          <div className="browse-category">
+          <div
+            className="browse-category"
+            onClick={() => handleSetCategory("")}
+          >
             <div className="browse-content">
               <FaArtstation className="browse-icon" />
             </div>
             <span className="browse-item">Arts & Theater</span>
           </div>
-          <div className="browse-category">
+          <div
+            className="browse-category"
+            onClick={() => handleSetCategory("")}
+          >
             <div className="browse-content">
               <MdTheaterComedy className="browse-icon" />
             </div>
             <span className="browse-item">Comedy</span>
           </div>
-          <div className="browse-category">
+          <div
+            className="browse-category"
+            onClick={() => handleSetCategory("")}
+          >
             <div className="browse-content">
               <MdOutlineFestival className="browse-icon" />
             </div>
             <span className="browse-item">Festivals</span>
           </div>
-          <div className="browse-category">
+          <div
+            className="browse-category"
+            onClick={() => handleSetCategory("")}
+          >
             <div className="browse-content">
               <GrTechnology className="browse-icon" />
             </div>
@@ -148,6 +168,7 @@ function Home() {
                 <img
                   src="https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                   className="explore-item-img"
+                  alt=""
                 />
               </div>
               <h3 className="explore-item-title">Title of event</h3>
@@ -163,6 +184,7 @@ function Home() {
                 <img
                   src="https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                   className="explore-item-img"
+                  alt=""
                 />
               </div>
               <h3 className="explore-item-title">Title of event</h3>
@@ -178,6 +200,7 @@ function Home() {
                 <img
                   src="https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                   className="explore-item-img"
+                  alt=""
                 />
               </div>
               <h3 className="explore-item-title">Title of event</h3>
@@ -193,6 +216,7 @@ function Home() {
                 <img
                   src="https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                   className="explore-item-img"
+                  alt=""
                 />
               </div>
               <h3 className="explore-item-title">Title of event</h3>
