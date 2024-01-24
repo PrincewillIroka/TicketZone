@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { BsFileMusic } from "react-icons/bs";
@@ -10,10 +10,16 @@ import {
 import { FaArtstation } from "react-icons/fa";
 import { GrTechnology } from "react-icons/gr";
 import "./Home.css";
+import { getCategories } from "../../services/eventServices";
 
 function Home() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("most_recent");
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    handleGetCategories();
+  }, []);
 
   const handleSetActiveTab = (activeTab) => {
     setActiveTab(activeTab);
@@ -23,6 +29,35 @@ function Home() {
 
   const handleNavigateToLogin = () => {
     navigate("/login");
+  };
+
+  const handleGetCategories = () => {
+    getCategories().then((response) => {
+      const { success, data } = response || {};
+      if (success) {
+        setCategories(data);
+      }
+    });
+  };
+
+  const getCategoryIcon = (name) => {
+    let icon,
+      categoryName = name.toLowerCase();
+    if (categoryName === "music") {
+      icon = <BsFileMusic className="browse-icon" />;
+    } else if (categoryName === "sports") {
+      icon = <MdOutlineSportsSoccer className="browse-icon" />;
+    } else if (categoryName === "arts & theater") {
+      icon = <FaArtstation className="browse-icon" />;
+    } else if (categoryName === "comedy") {
+      icon = <MdTheaterComedy className="browse-icon" />;
+    } else if (categoryName === "festivals") {
+      icon = <MdOutlineFestival className="browse-icon" />;
+    } else if (categoryName === "technology") {
+      icon = <GrTechnology className="browse-icon" />;
+    }
+
+    return icon;
   };
 
   return (
@@ -61,60 +96,16 @@ function Home() {
           </div>
         </div>
         <div className="browse-section">
-          <div
-            className="browse-category"
-            onClick={() => handleSetCategory("")}
-          >
-            <div className="browse-content">
-              <BsFileMusic className="browse-icon" />
+          {categories.map(({ name }, index) => (
+            <div
+              className="browse-category"
+              onClick={() => handleSetCategory("")}
+              key={index}
+            >
+              <div className="browse-content">{getCategoryIcon(name)}</div>
+              <span className="browse-item">{name}</span>
             </div>
-            <span className="browse-item">Music</span>
-          </div>
-          <div
-            className="browse-category"
-            onClick={() => handleSetCategory("")}
-          >
-            <div className="browse-content">
-              <MdOutlineSportsSoccer className="browse-icon" />
-            </div>
-            <span className="browse-item">Sports</span>
-          </div>
-          <div
-            className="browse-category"
-            onClick={() => handleSetCategory("")}
-          >
-            <div className="browse-content">
-              <FaArtstation className="browse-icon" />
-            </div>
-            <span className="browse-item">Arts & Theater</span>
-          </div>
-          <div
-            className="browse-category"
-            onClick={() => handleSetCategory("")}
-          >
-            <div className="browse-content">
-              <MdTheaterComedy className="browse-icon" />
-            </div>
-            <span className="browse-item">Comedy</span>
-          </div>
-          <div
-            className="browse-category"
-            onClick={() => handleSetCategory("")}
-          >
-            <div className="browse-content">
-              <MdOutlineFestival className="browse-icon" />
-            </div>
-            <span className="browse-item">Festivals</span>
-          </div>
-          <div
-            className="browse-category"
-            onClick={() => handleSetCategory("")}
-          >
-            <div className="browse-content">
-              <GrTechnology className="browse-icon" />
-            </div>
-            <span className="browse-item">Technology</span>
-          </div>
+          ))}
         </div>
         <div className="explore-section">
           <h1>Explore Events</h1>
