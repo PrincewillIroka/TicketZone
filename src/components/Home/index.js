@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { BsFileMusic } from "react-icons/bs";
 import {
@@ -11,6 +12,7 @@ import { GrTechnology } from "react-icons/gr";
 import "./Home.css";
 
 function Home() {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("most_recent");
 
   const handleSetActiveTab = (activeTab) => {
@@ -18,6 +20,10 @@ function Home() {
   };
 
   const handleSetCategory = (category) => {};
+
+  const handleNavigateToLogin = () => {
+    navigate("/login");
+  };
 
   return (
     <div>
@@ -34,7 +40,9 @@ function Home() {
             <input placeholder="Search for events" className="search-input" />
           </li>
           <li>
-            <button className="btn-login">Login</button>
+            <button className="btn-login" onClick={handleNavigateToLogin}>
+              Login
+            </button>
           </li>
         </ul>
       </header>
@@ -45,7 +53,7 @@ function Home() {
               Buy or Sell your event tickets easily wherever you are
             </h1>
             <h3 className="banner-subtitle">
-              Discover the best live events, concerts, festivals, and shows.
+              Access tickets for live events, concerts, festivals, and shows.
             </h3>
             <button className="btn-cta">
               Find an event <AiOutlineArrowRight className="arrow-right" />
