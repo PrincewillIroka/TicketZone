@@ -10,15 +10,17 @@ import {
 import { FaArtstation } from "react-icons/fa";
 import { GrTechnology } from "react-icons/gr";
 import "./Home.css";
-import { getCategories } from "../../services/eventServices";
+import { getCategories, getEvents } from "../../services/eventServices";
 
 function Home() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("most_recent");
   const [categories, setCategories] = useState([]);
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
     handleGetCategories();
+    handleGetEvents();
   }, []);
 
   const handleSetActiveTab = (activeTab) => {
@@ -36,6 +38,16 @@ function Home() {
       const { success, data } = response || {};
       if (success) {
         setCategories(data);
+      }
+    });
+  };
+
+  const handleGetEvents = () => {
+    getEvents().then((response) => {
+      const { success, data } = response || {};
+      console.log({ fff: data });
+      if (success) {
+        setEvents(data);
       }
     });
   };
@@ -162,70 +174,24 @@ function Home() {
             </li>
           </ul>
           <div className="explore-items">
-            <div className="explore-item">
-              <div className="explore-item-wallpaper">
-                <img
-                  src="https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                  className="explore-item-img"
-                  alt=""
-                />
+            {events.map(({ title, venue }, index) => (
+              <div className="explore-item" key={index}>
+                <div className="explore-item-wallpaper">
+                  <img
+                    src="https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    className="explore-item-img"
+                    alt=""
+                  />
+                </div>
+                <h3 className="explore-item-title">{title}</h3>
+                <div className="explore-item-calendar">
+                  <span className="explore-item-date">December 31st</span>
+                  <span>&#8226;</span>
+                  <span className="explore-item-time">8:30pm</span>
+                </div>
+                <div className="explore-item-venue">{venue}</div>
               </div>
-              <h3 className="explore-item-title">Title of event</h3>
-              <div className="explore-item-calendar">
-                <span className="explore-item-date">December 31st</span>
-                <span>&#8226;</span>
-                <span className="explore-item-time">8:30pm</span>
-              </div>
-              <div className="explore-item-venue">Gowon Stadium</div>
-            </div>
-            <div className="explore-item">
-              <div className="explore-item-wallpaper">
-                <img
-                  src="https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                  className="explore-item-img"
-                  alt=""
-                />
-              </div>
-              <h3 className="explore-item-title">Title of event</h3>
-              <div className="explore-item-calendar">
-                <span className="explore-item-date">December 31st</span>
-                <span>&#8226;</span>
-                <span className="explore-item-time">8:30pm</span>
-              </div>
-              <div className="explore-item-venue">Gowon Stadium</div>
-            </div>
-            <div className="explore-item">
-              <div className="explore-item-wallpaper">
-                <img
-                  src="https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                  className="explore-item-img"
-                  alt=""
-                />
-              </div>
-              <h3 className="explore-item-title">Title of event</h3>
-              <div className="explore-item-calendar">
-                <span className="explore-item-date">December 31st</span>
-                <span>&#8226;</span>
-                <span className="explore-item-time">8:30pm</span>
-              </div>
-              <div className="explore-item-venue">Gowon Stadium</div>
-            </div>
-            <div className="explore-item">
-              <div className="explore-item-wallpaper">
-                <img
-                  src="https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                  className="explore-item-img"
-                  alt=""
-                />
-              </div>
-              <h3 className="explore-item-title">Title of event</h3>
-              <div className="explore-item-calendar">
-                <span className="explore-item-date">December 31st</span>
-                <span>&#8226;</span>
-                <span className="explore-item-time">8:30pm</span>
-              </div>
-              <div className="explore-item-venue">Gowon Stadium</div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

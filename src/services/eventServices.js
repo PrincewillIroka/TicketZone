@@ -16,4 +16,20 @@ const getCategories = () => {
   });
 };
 
-export { getCategories };
+const getEvents = () => {
+  return new Promise((resolve, reject) => {
+    const url = `${APP_BACKEND}/api/events`;
+
+    fetch(url, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((response) => resolve(response))
+      .catch((error) => {
+        console.error(error);
+        return reject(error);
+      });
+  });
+};
+
+export { getCategories, getEvents };
