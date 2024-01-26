@@ -125,8 +125,8 @@ function Home() {
             <li className="explore-tag">
               <button
                 onClick={() => handleSetActiveTab("most_recent")}
-                className={`explore-btn ${
-                  activeTab === "most_recent" && "explore-btn-active"
+                className={`btn-explore ${
+                  activeTab === "most_recent" && "btn-explore-active"
                 }`}
               >
                 Most recent
@@ -135,8 +135,8 @@ function Home() {
             <li className="explore-tag">
               <button
                 onClick={() => handleSetActiveTab("trending")}
-                className={`explore-btn ${
-                  activeTab === "trending" && "explore-btn-active"
+                className={`btn-explore ${
+                  activeTab === "trending" && "btn-explore-active"
                 }`}
               >
                 Trending
@@ -145,8 +145,8 @@ function Home() {
             <li className="explore-tag">
               <button
                 onClick={() => handleSetActiveTab("popular_artists")}
-                className={`explore-btn ${
-                  activeTab === "popular_artists" && "explore-btn-active"
+                className={`btn-explore ${
+                  activeTab === "popular_artists" && "btn-explore-active"
                 }`}
               >
                 Popular artists
@@ -155,8 +155,8 @@ function Home() {
             <li className="explore-tag">
               <button
                 onClick={() => handleSetActiveTab("this_month")}
-                className={`explore-btn ${
-                  activeTab === "this_month" && "explore-btn-active"
+                className={`btn-explore ${
+                  activeTab === "this_month" && "btn-explore-active"
                 }`}
               >
                 This month
@@ -165,8 +165,8 @@ function Home() {
             <li className="explore-tag">
               <button
                 onClick={() => handleSetActiveTab("popular_locations")}
-                className={`explore-btn ${
-                  activeTab === "popular_locations" && "explore-btn-active"
+                className={`btn-explore ${
+                  activeTab === "popular_locations" && "btn-explore-active"
                 }`}
               >
                 Popular locations
@@ -192,6 +192,9 @@ function Home() {
                 <div className="explore-item-venue">{venue}</div>
               </div>
             ))}
+          </div>
+          <div className="explore-more">
+            <button className="btn-explore-show-more">Show more</button>
           </div>
         </div>
       </section>

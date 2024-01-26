@@ -150,7 +150,7 @@ header {
   margin-right: 10px;
 }
 
-.explore-btn {
+.btn-explore {
   padding: 7px 15px;
   font-size: 14px;
   border: 1px solid #ccc;
@@ -159,7 +159,7 @@ header {
   opacity: 0.7;
 }
 
-.explore-btn-active {
+.btn-explore-active {
   background-color: #f61253;
   border: 1px solid #f61253;
   color: #fff;
@@ -167,8 +167,8 @@ header {
 
 .explore-items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 25%);
-  column-gap: 40px;
+  grid-template-columns: repeat(4, 23%);
+  justify-content: space-between;
   row-gap: 40px;
 }
 
@@ -213,4 +213,19 @@ header {
 .explore-item-venue {
   padding: 0 7px;
   opacity: 0.5;
+}
+
+.explore-more {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-explore-show-more {
+  margin-top: 70px;
+  border: 1px solid #f61253;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #f61253;
+  cursor: pointer;
 }
