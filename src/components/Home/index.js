@@ -7,7 +7,7 @@ import {
   MdTheaterComedy,
   MdOutlineFestival,
 } from "react-icons/md";
-import { FaArtstation } from "react-icons/fa";
+import { FaArtstation, FaBible } from "react-icons/fa";
 import { GrTechnology } from "react-icons/gr";
 import "./Home.css";
 import { getCategories, getEvents } from "../../services/eventServices";
@@ -29,8 +29,8 @@ function Home() {
 
   const handleSetCategory = (category) => {};
 
-  const handleNavigateToLogin = () => {
-    navigate("/login");
+  const handleNavigate = (page) => {
+    navigate(page);
   };
 
   const handleGetCategories = () => {
@@ -67,6 +67,8 @@ function Home() {
       icon = <MdOutlineFestival className="browse-icon" />;
     } else if (categoryName === "technology") {
       icon = <GrTechnology className="browse-icon" />;
+    } else if (categoryName === "gospel") {
+      icon = <FaBible className="browse-icon" />;
     }
 
     return icon;
@@ -76,25 +78,38 @@ function Home() {
     <div>
       <header>
         <ul className="nav-pages">
-          <li>Trending</li>
-          <li>Sports</li>
-          <li>Concerts</li>
-          <li>Festivals</li>
-          <li>Theater</li>
+          <li>
+            <a href="">Trending</a>
+          </li>
+          <li>
+            <a href="">Sports</a>
+          </li>
+          <li>
+            <a href="">Concerts</a>
+          </li>
+          <li>
+            <a href="">Festivals</a>
+          </li>
+          <li>
+            <a href="">Theater</a>
+          </li>
         </ul>
         <ul className="nav-controls">
           <li className="search-input-container">
             <input placeholder="Search for events" className="search-input" />
           </li>
           <li>
-            <button className="btn-login" onClick={handleNavigateToLogin}>
+            <button
+              className="btn-login"
+              onClick={() => handleNavigate("login")}
+            >
               Login
             </button>
           </li>
         </ul>
       </header>
-      <section>
-        <div className="banner-section">
+      <div>
+        <section className="banner-section">
           <div className="banner-content">
             <h1 className="banner-title">
               Buy or Sell your event tickets easily wherever you are
@@ -106,8 +121,8 @@ function Home() {
               Find an event <AiOutlineArrowRight className="arrow-right" />
             </button>
           </div>
-        </div>
-        <div className="browse-section">
+        </section>
+        <section className="browse-section">
           {categories.map(({ name }, index) => (
             <div
               className="browse-category"
@@ -118,8 +133,8 @@ function Home() {
               <span className="browse-item">{name}</span>
             </div>
           ))}
-        </div>
-        <div className="explore-section">
+        </section>
+        <section className="explore-section">
           <h1>Explore Events</h1>
           <ul className="explore-tags">
             <li className="explore-tag">
@@ -196,8 +211,31 @@ function Home() {
           <div className="explore-more">
             <button className="btn-explore-show-more">Show more</button>
           </div>
-        </div>
-      </section>
+        </section>
+        <section className="features-section">
+          <div className="feature-single">Buy and Sell Tickets</div>
+          <div className="feature-single">100% Guarantee, Safe & Secure</div>
+          <div className="feature-single">Full service Customer care</div>
+        </section>
+        <section className="mailinglist-section">
+          <div>
+            <h3 className="mailinglist-heading">Stay in the know</h3>
+            <p className="mailinglist-info">
+              Join our email list and be the first to know about exclusive
+              offers, the best in live events, and more.
+            </p>
+          </div>
+          <form className="mailinglist-form">
+            <input placeholder="Email Address" className="mailinglist-input" />
+            <button className="mailinglist-btn">Send</button>
+          </form>
+        </section>
+        <footer>
+          <div>
+            <b>TicketZone</b>
+          </div>
+        </footer>
+      </div>
     </div>
   );
 }

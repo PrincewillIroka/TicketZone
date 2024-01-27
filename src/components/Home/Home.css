@@ -229,3 +229,68 @@ header {
   color: #f61253;
   cursor: pointer;
 }
+
+.features-section {
+  /* border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc; */
+  padding: 50px 10%;
+  background-color: #f8f6f6;
+  display: flex;
+  justify-content: space-between;
+  height: 200px;
+}
+
+.feature-single {
+  background-color: #fff;
+  padding: 30px;
+  border: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mailinglist-section {
+  display: flex;
+  align-items: center;
+  padding: 5% 10%;
+}
+
+.mailinglist-heading {
+  font-size: 20px;
+}
+
+.mailinglist-info {
+  width: 80%;
+  font-size: 16px;
+  line-height: 25px;
+}
+
+.mailinglist-form {
+  display: flex;
+  align-items: center;
+}
+
+.mailinglist-input {
+  height: 40px;
+  border-radius: 5px;
+  width: 18vw;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  padding: 0 7px;
+}
+
+.mailinglist-btn {
+  background-color: #f61253;
+  margin-left: 10px;
+  height: 40px;
+  width: 80px;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+footer {
+  background-color: #1e2126;
+  color: #fff;
+  padding: 5% 10%;
+}
