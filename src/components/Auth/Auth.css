@@ -8,6 +8,7 @@
   width: 50%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -25,9 +26,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 60px;
 }
 
-.auth-title{
+.auth-title {
   margin-bottom: 50px;
 }
 
@@ -54,4 +56,10 @@
 
 .btn-auth-submit:hover {
   opacity: 0.8;
+}
+
+.signup-link {
+  color: #f61253;
+  cursor: pointer;
+  margin-left: 7px;
 }
