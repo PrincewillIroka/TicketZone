@@ -32,7 +32,7 @@ function Header(props) {
           <input placeholder="Search for events" className="search-input" />
         </li>
         <li>
-          <button className="btn-login" onClick={() => handleNavigate("login")}>
+          <button className="btn-login" onClick={() => handleNavigate("/login")}>
             Login
           </button>
         </li>
