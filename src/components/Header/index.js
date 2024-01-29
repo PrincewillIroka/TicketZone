@@ -1,30 +1,43 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { FaCircleUser } from "react-icons/fa6";
+import { useStateValue } from "store/stateProvider";
 
-function Header(props) {
+function Header() {
+  const { state } = useStateValue();
   const navigate = useNavigate();
+  const location = useLocation();
+  const { isUserLoggedIn } = state;
 
   const handleNavigate = (page) => {
     navigate(page);
   };
 
+  const getActiveTab = (value) => location.pathname === value;
+
   return (
     <header>
-      <ul className="nav-pages">
-        <li>
-          <a href="/">Trending</a>
+      <ul className="nav-links">
+        <li className={`${getActiveTab("/") && "nav-links-active"}`}>
+          <a href="/">Home</a>
         </li>
-        <li>
-          <a href="/">Sports</a>
+        <li className={`${getActiveTab("/explore") && "nav-links-active"}`}>
+          <a href="/explore">Explore</a>
         </li>
-        <li>
-          <a href="/">Concerts</a>
+        <li
+          className={`${getActiveTab("/buy-a-ticket") && "nav-links-active"}`}
+        >
+          <a href="/buy-a-ticket">Buy A Ticket</a>
         </li>
-        <li>
-          <a href="/">Festivals</a>
+        <li
+          className={`${getActiveTab("/sell-tickets") && "nav-links-active"}`}
+        >
+          <a href="/sell-tickets">Sell Tickets</a>
         </li>
-        <li>
-          <a href="/">Theater</a>
+        <li
+          className={`${getActiveTab("/how-it-works") && "nav-links-active"}`}
+        >
+          <a href="/how-it-works">How It Works</a>
         </li>
       </ul>
       <ul className="nav-controls">
@@ -32,9 +45,20 @@ function Header(props) {
           <input placeholder="Search for events" className="search-input" />
         </li>
         <li>
-          <button className="btn-login" onClick={() => handleNavigate("/login")}>
-            Login
-          </button>
+          {!isUserLoggedIn ? (
+            <button
+              className="btn-login"
+              onClick={() => handleNavigate("/login")}
+            >
+              Login
+            </button>
+          ) : (
+            <FaCircleUser
+              className="user-profile-icon"
+              title="Dashboard"
+              onClick={() => handleNavigate("/dashboard")}
+            />
+          )}
         </li>
       </ul>
     </header>

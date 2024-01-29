@@ -3,21 +3,28 @@ header {
   background-color: #1e2126;
   display: flex;
   justify-content: space-between;
+  position: sticky;
 }
 
-.nav-pages,
+.nav-links,
 .nav-controls {
   display: flex;
+  align-items: center;
+  color: #fff;
 }
 
-.nav-pages li {
+.nav-links li {
   margin-right: 50px;
   font-weight: bold;
-  color: #fff;
   cursor: pointer;
+  font-size: 16px;
 }
 
-.nav-pages li:hover {
+.nav-links-active {
+  color: #f61253;
+}
+
+.nav-links li:hover {
   color: #f61253;
 }
 
@@ -293,4 +300,10 @@ footer {
   background-color: #1e2126;
   color: #fff;
   padding: 5% 10%;
+}
+
+.user-profile-icon {
+  color: #fff;
+  font-size: 25px;
+  cursor: pointer;
 }
