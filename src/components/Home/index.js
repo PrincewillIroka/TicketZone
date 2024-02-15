@@ -8,8 +8,9 @@ import {
 } from "react-icons/md";
 import { FaArtstation, FaBible } from "react-icons/fa";
 import { GrTechnology } from "react-icons/gr";
+import CurveSvg from "assets/Curve.svg";
 import "./Home.css";
-import { getCategories, getEvents } from "../../services/eventServices";
+import { getCategories, getEvents } from "services/eventServices";
 import Header from "../Header";
 
 function Home() {
@@ -40,7 +41,7 @@ function Home() {
   const handleGetEvents = () => {
     getEvents().then((response) => {
       const { success, data } = response || {};
-      console.log({ fff: data });
+      console.log({ eventsResponse: data });
       if (success) {
         setEvents(data);
       }
@@ -181,6 +182,9 @@ function Home() {
           <div className="feature-single">100% Guarantee, Safe & Secure</div>
           <div className="feature-single">Full service Customer care</div>
         </section>
+        <div className="explore-curve-bg">
+          <img src={CurveSvg} className="explore-curve" />
+        </div>
         <section className="mailinglist-section">
           <div>
             <h3 className="mailinglist-heading">Stay in the know</h3>
