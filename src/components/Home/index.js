@@ -41,7 +41,6 @@ function Home() {
   const handleGetEvents = () => {
     getEvents().then((response) => {
       const { success, data } = response || {};
-      console.log({ eventsResponse: data });
       if (success) {
         setEvents(data);
       }
