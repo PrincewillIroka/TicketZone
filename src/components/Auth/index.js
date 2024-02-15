@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./Auth.css";
-import { userLogin } from "../../services/authServices";
+import { userLogin, userSignUp } from "services/authServices";
+import { useStateValue } from "store/stateProvider";
 
 const BTN_CAPTION = {
   login: `Don't have an account ? `,
@@ -16,10 +17,13 @@ const BTN_TAG = {
 function Auth() {
   const navigate = useNavigate();
   const location = useLocation();
-  const activeAction = location.pathname.split("/")[1];
+  const { dispatch } = useStateValue();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState("");
+
+  const activeAction = location.pathname.split("/")[1];
 
   const getActiveTab = (value) => location.pathname.includes(value);
 
@@ -34,15 +38,27 @@ function Auth() {
   const handleLogin = async () => {
     setIsLoading(true);
     await userLogin({ email, password }).then((response) => {
-      const { success, data } = response;
+      const { success, data: user } = response;
       if (success) {
+        localStorage.setItem("isUserLoggedIn", JSON.stringify(true));
+        localStorage.setItem("user", JSON.stringify(user));
+        dispatch({ type: "GET_USER_SUCCESS", payload: user });
         navigate("/dashboard", { replace: true });
       }
       setIsLoading(false);
     });
   };
 
-  const handleSignUp = () => {};
+  const handleSignUp = async () => {
+    setIsLoading(true);
+    await userSignUp({ email, password }).then((response) => {
+      const { success, data: user } = response;
+      if (success) {
+        navigate("/login", { replace: true });
+      }
+      setIsLoading(false);
+    });
+  };
 
   return (
     <section className="auth-container">
@@ -53,7 +69,9 @@ function Auth() {
             placeholder="Email"
             className="auth-input"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
           />
           <input
             placeholder="Password"
@@ -65,6 +83,7 @@ function Auth() {
           <button
             className="btn-auth-submit"
             onClick={(e) => {
+              e.preventDefault();
               getActiveTab("login") ? handleLogin() : handleSignUp();
             }}
           >

@@ -1,6 +1,6 @@
 const initialState = {
-  isUserLoggedIn: false,
-  user: {},
+  isUserLoggedIn: JSON.parse(localStorage.getItem("isUserLoggedIn")) || false,
+  user: JSON.parse(localStorage.getItem("user")) || {},
 };
 
 export default initialState;

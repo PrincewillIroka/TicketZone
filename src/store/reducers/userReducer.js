@@ -4,7 +4,7 @@ const userReducer = (state, action) => {
       return {
         ...state,
         user: action.payload,
-        isUserLoggedIn: false,
+        isUserLoggedIn: true,
       };
     }
     default:
