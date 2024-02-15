@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
 import { useStateValue } from "store/stateProvider";
+import "./Header.css";
 
 function Header() {
   const { state } = useStateValue();
