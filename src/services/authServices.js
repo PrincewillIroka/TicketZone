@@ -6,6 +6,7 @@ const userLogin = ({ email, password }) => {
 
     fetch(url, {
       method: "POST",
+      mode: "cors",
       headers: {
         "Content-Type": "application/json",
       },
@@ -26,6 +27,7 @@ const userSignUp = ({ email, password }) => {
 
     fetch(url, {
       method: "PUT",
+      mode: "cors",
       headers: {
         "Content-Type": "application/json",
       },
