@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { BsFileMusic } from "react-icons/bs";
 import {
@@ -9,14 +10,16 @@ import {
 import { FaArtstation, FaBible } from "react-icons/fa";
 import { GrTechnology } from "react-icons/gr";
 import CurveSvg from "assets/Curve.svg";
-import "./Home.css";
 import { getCategories, getEvents } from "services/eventServices";
+import "./Home.css";
 import Header from "../Header";
+import Footer from "../Footer";
 
 function Home() {
   const [activeTab, setActiveTab] = useState("most_recent");
   const [categories, setCategories] = useState([]);
   const [events, setEvents] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     handleGetCategories();
@@ -69,10 +72,14 @@ function Home() {
     return icon;
   };
 
+  const handleNavigate = (page) => {
+    navigate(page);
+  };
+
   return (
     <div>
       <Header />
-      <div>
+      <div className="layout-container">
         <section className="banner-section">
           <div className="banner-content">
             <h1 className="banner-title">
@@ -81,7 +88,10 @@ function Home() {
             <h3 className="banner-subtitle">
               Access tickets for live events, concerts, festivals, and shows.
             </h3>
-            <button className="btn-cta">
+            <button
+              className="btn-cta"
+              onClick={() => handleNavigate("/explore")}
+            >
               Find an event <AiOutlineArrowRight className="arrow-right" />
             </button>
           </div>
@@ -197,11 +207,7 @@ function Home() {
             <button className="mailinglist-btn">Send</button>
           </form>
         </section>
-        <footer>
-          <div>
-            <b>TicketZone</b>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   );
