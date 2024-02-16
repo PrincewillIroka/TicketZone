@@ -182,7 +182,7 @@ function Home() {
           <div className="feature-single">Full service Customer care</div>
         </section>
         <div className="explore-curve-bg">
-          <img src={CurveSvg} className="explore-curve" />
+          <img src={CurveSvg} className="explore-curve" alt="CurveSvg" />
         </div>
         <section className="mailinglist-section">
           <div>
