@@ -119,6 +119,7 @@
   grid-template-columns: repeat(4, 23%);
   justify-content: space-between;
   row-gap: 40px;
+  cursor: pointer;
 }
 
 .explore-item {
@@ -129,6 +130,10 @@
     rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
+.explore-item:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
 .explore-item-wallpaper {
   height: 70%;
   margin-bottom: 10px;
@@ -137,6 +142,11 @@
 .explore-item-img {
   height: 100%;
   width: 100%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.explore-item-img:hover {
+  transform: scale(0.95);
 }
 
 .explore-item-title {
