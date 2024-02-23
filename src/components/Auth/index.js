@@ -97,7 +97,7 @@ function Auth() {
           </span>
         </p>
       </div>
-      <div className="auth-bg" />
+      <img className="auth-bg" src="/images/1_WEe12m3W1pyby00G4Uvc5Q.jpeg" alt=""/>
     </section>
   );
 }

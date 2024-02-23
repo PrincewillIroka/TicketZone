@@ -16,10 +16,7 @@
 .auth-bg {
   height: 100%;
   width: 50%;
-  background-image: url("../../assets/1_WEe12m3W1pyby00G4Uvc5Q.jpeg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  object-fit: cover;
 }
 
 .auth-form {
