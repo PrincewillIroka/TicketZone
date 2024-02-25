@@ -26,8 +26,8 @@ function Explore() {
       <div className="layout-container">
         <section className="explore-section">
           <div className="explore-items">
-            {events.map(({ title, venue }, index) => (
-              <EventCard title={title} venue={venue} index={index} />
+            {events.map((event, index) => (
+              <EventCard event={event} key={index} />
             ))}
           </div>
         </section>

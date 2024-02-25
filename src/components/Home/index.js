@@ -162,8 +162,8 @@ function Home() {
             </li>
           </ul>
           <div className="explore-items">
-            {events.map(({ title, venue }, index) => (
-              <EventCard title={title} venue={venue} index={index} />
+            {events.map((event, index) => (
+              <EventCard event={event} key={index} />
             ))}
           </div>
           <div className="explore-more">

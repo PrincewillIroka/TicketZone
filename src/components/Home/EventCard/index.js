@@ -1,11 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function EventCard({ title, venue, index }) {
+function EventCard({ event }) {
   const navigate = useNavigate();
+  const { title, venue } = event;
 
   const handleNavigate = (page) => {
-    navigate(page);
+    navigate(page, { state: event });
   };
 
   const getEventAlias = (title) => {
@@ -16,11 +17,7 @@ function EventCard({ title, venue, index }) {
   const eventAlias = getEventAlias(title);
 
   return (
-    <div
-      className="explore-item"
-      key={index}
-      onClick={() => handleNavigate(eventAlias)}
-    >
+    <div className="explore-item" onClick={() => handleNavigate(eventAlias)}>
       <div className="explore-item-wallpaper">
         <img
           src="https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
