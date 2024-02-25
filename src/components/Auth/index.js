@@ -60,11 +60,20 @@ function Auth() {
     });
   };
 
+  const handleNavigate = (page) => {
+    navigate(page);
+  };
+
   return (
     <section className="auth-container">
       <div className="auth-content">
         <form className="auth-form">
-          <h1 className="auth-title">Ticket Zone</h1>
+          <img
+            src="/logo.png"
+            className="auth-logo"
+            alt="Logo"
+            onClick={() => handleNavigate("/")}
+          />
           <input
             placeholder="Email"
             className="auth-input"
@@ -97,7 +106,11 @@ function Auth() {
           </span>
         </p>
       </div>
-      <img className="auth-bg" src="/images/1_WEe12m3W1pyby00G4Uvc5Q.jpeg" alt=""/>
+      <img
+        className="auth-bg"
+        src="/images/1_WEe12m3W1pyby00G4Uvc5Q.jpeg"
+        alt=""
+      />
     </section>
   );
 }
