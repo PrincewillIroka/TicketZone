@@ -7,6 +7,7 @@ import HowItWorks from "components/HowItWorks";
 import BuyATicket from "components/BuyATicket";
 import SellTickets from "components/SellTickets";
 import Explore from "components/Explore";
+import EventDetail from "components/EventDetail";
 
 import { StateProvider } from "store/stateProvider";
 import initialState from "store/state";
@@ -25,7 +26,8 @@ function App() {
           <Route path="/buy-a-ticket" element={<BuyATicket />} />
           <Route path="/sell-tickets" element={<SellTickets />} />
           <Route path="/explore" element={<Explore />} />
-          <Route path="/events/:page" element={<Events />} />
+          <Route path="/explore-category/:page" element={<Events />} />
+          <Route path="/explore-event/:page" element={<EventDetail />} />
         </Routes>
       </Router>
     </StateProvider>
