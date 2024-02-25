@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "components/Home";
 import Auth from "components/Auth";
-import Gallery from "components/Gallery";
+import Events from "components/Events";
 import Dashboard from "components/Dashboard";
 import HowItWorks from "components/HowItWorks";
 import BuyATicket from "components/BuyATicket";
@@ -20,12 +20,12 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<Auth />} />
           <Route path="/signup" element={<Auth />} />
-          <Route path="/gallery/:page" element={<Gallery />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="/buy-a-ticket" element={<BuyATicket />} />
           <Route path="/sell-tickets" element={<SellTickets />} />
           <Route path="/explore" element={<Explore />} />
+          <Route path="/events/:page" element={<Events />} />
         </Routes>
       </Router>
     </StateProvider>
