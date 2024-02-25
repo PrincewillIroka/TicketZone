@@ -19,9 +19,14 @@ function Header() {
   return (
     <header>
       <ul className="nav-links">
-        <li className={`${getActiveTab("/") && "nav-links-active"}`}>
-          <a href="/">Home</a>
+        <li>
+          <a href="/">
+            <img src="/logo.png" className="img-logo" alt="Logo"/>
+          </a>
         </li>
+        {/* <li className={`${getActiveTab("/") && "nav-links-active"}`}>
+          <a href="/">Home</a>
+        </li> */}
         <li className={`${getActiveTab("/explore") && "nav-links-active"}`}>
           <a href="/explore">Explore</a>
         </li>
