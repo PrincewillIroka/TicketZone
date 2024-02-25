@@ -14,6 +14,7 @@ import { getCategories, getEvents } from "services/eventServices";
 import "./Home.css";
 import Header from "../Header";
 import Footer from "../Footer";
+import EventCard from "./EventCard";
 
 function Home() {
   const [activeTab, setActiveTab] = useState("most_recent");
@@ -98,7 +99,7 @@ function Home() {
           {categories.map(({ name, alias }, index) => (
             <a
               className="browse-category"
-              href={`/events/${alias}`}
+              href={`/explore-category/${alias}`}
               key={index}
             >
               <span className="browse-content">{getCategoryIcon(name)}</span>
@@ -162,22 +163,11 @@ function Home() {
           </ul>
           <div className="explore-items">
             {events.map(({ title, venue }, index) => (
-              <div className="explore-item" key={index}>
-                <div className="explore-item-wallpaper">
-                  <img
-                    src="https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                    className="explore-item-img"
-                    alt=""
-                  />
-                </div>
-                <h3 className="explore-item-title">{title}</h3>
-                <div className="explore-item-calendar">
-                  <span className="explore-item-date">December 31st</span>
-                  <span>&#8226;</span>
-                  <span className="explore-item-time">8:30pm</span>
-                </div>
-                <div className="explore-item-venue">{venue}</div>
-              </div>
+              <EventCard
+                title={title}
+                venue={venue}
+                index={index}
+              />
             ))}
           </div>
           <div className="explore-more">

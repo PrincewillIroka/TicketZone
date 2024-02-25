@@ -6,8 +6,8 @@ function Events(props) {
   return (
     <div>
       <Header />
-      
-      <Footer />
+
+      {/* <Footer /> */}
     </div>
   );
 }
