@@ -30,8 +30,6 @@ function Home() {
     setActiveTab(activeTab);
   };
 
-  const handleSetCategory = (category) => {};
-
   const handleGetCategories = () => {
     getCategories().then((response) => {
       const { success, data } = response || {};
@@ -97,15 +95,15 @@ function Home() {
           </div>
         </section>
         <section className="browse-section">
-          {categories.map(({ name }, index) => (
-            <div
+          {categories.map(({ name, alias }, index) => (
+            <a
               className="browse-category"
-              onClick={() => handleSetCategory("")}
+              href={`/events/${alias}`}
               key={index}
             >
-              <div className="browse-content">{getCategoryIcon(name)}</div>
+              <span className="browse-content">{getCategoryIcon(name)}</span>
               <span className="browse-item">{name}</span>
-            </div>
+            </a>
           ))}
         </section>
         <section className="explore-section">

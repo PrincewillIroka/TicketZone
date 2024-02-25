@@ -13,6 +13,7 @@
   justify-content: center;
   color: #fff;
   padding: 0 10%;
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .banner-title {
@@ -259,12 +260,6 @@
   color: #fff;
   border-radius: 5px;
   font-size: 16px;
-}
-
-footer {
-  background-color: #1e2126;
-  color: #fff;
-  padding: 5% 10%;
 }
 
 .user-profile-icon {
