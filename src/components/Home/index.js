@@ -163,11 +163,7 @@ function Home() {
           </ul>
           <div className="explore-items">
             {events.map(({ title, venue }, index) => (
-              <EventCard
-                title={title}
-                venue={venue}
-                index={index}
-              />
+              <EventCard title={title} venue={venue} index={index} />
             ))}
           </div>
           <div className="explore-more">
@@ -195,8 +191,8 @@ function Home() {
             <button className="mailinglist-btn">Send</button>
           </form>
         </section>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }

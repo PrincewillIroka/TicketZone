@@ -27,16 +27,12 @@ function Explore() {
         <section className="explore-section">
           <div className="explore-items">
             {events.map(({ title, venue }, index) => (
-              <EventCard
-                title={title}
-                venue={venue}
-                index={index}
-              />
+              <EventCard title={title} venue={venue} index={index} />
             ))}
           </div>
         </section>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }
