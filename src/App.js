@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "components/Home";
 import Auth from "components/Auth";
-import Events from "components/Events";
+import EventsCategory from "components/EventsCategory";
 import Dashboard from "components/Dashboard";
 import HowItWorks from "components/HowItWorks";
 import BuyATicket from "components/BuyATicket";
@@ -26,7 +26,7 @@ function App() {
           <Route path="/buy-a-ticket" element={<BuyATicket />} />
           <Route path="/sell-tickets" element={<SellTickets />} />
           <Route path="/explore" element={<Explore />} />
-          <Route path="/explore-category/:page" element={<Events />} />
+          <Route path="/explore-category/:page" element={<EventsCategory />} />
           <Route path="/explore-event/:page" element={<EventDetail />} />
         </Routes>
       </Router>
