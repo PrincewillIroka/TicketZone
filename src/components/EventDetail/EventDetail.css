@@ -33,6 +33,7 @@
 
 .event-detail-gallery {
   display: flex;
+  height: 60px;
 }
 
 .event-detail-gallery-single {
