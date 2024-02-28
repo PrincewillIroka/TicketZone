@@ -1,0 +1,155 @@
+.event-detail-container {
+  padding: 90px 10% 5%;
+}
+
+.event-detail-section {
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-detail-breadcrumb {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.event-detail-row {
+  display: flex;
+}
+
+.event-detail-img-container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
+}
+
+.event-detail-img {
+  width: 40vw;
+  height: 60vh;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.event-detail-gallery {
+  display: flex;
+}
+
+.event-detail-gallery-single {
+  border: 0.5px solid rgb(246, 18, 83, 0.8);
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 10px;
+  height: 50px;
+  width: 70px;
+}
+
+.event-detail-gallery-img {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.event-detail-others {
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+}
+
+.event-detail-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+
+.event-detail-venue-container {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.event-detail-venue {
+  margin-left: 5px;
+}
+
+.event-detail-description-container {
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+.event-detail-description {
+  margin-left: 5px;
+}
+
+.event-detail-price-container {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+.event-detail-price {
+  margin-left: 5px;
+  text-transform: capitalize;
+  color: #f61253;
+}
+
+.event-detail-quantity {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  margin-top: auto;
+}
+
+.quantity-title {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.quantity-container {
+  display: flex;
+  align-items: center;
+  height: 45px;
+  width: fit-content;
+  border: 1px solid #ccc;
+}
+
+.btn-quantity {
+  height: 100%;
+  width: 50px;
+  background-color: #e3e3e3;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-quantity {
+  height: 20px;
+  width: 20px;
+}
+
+.input-quantity {
+  flex: 1;
+  width: 50px;
+  font-size: 22px;
+  text-align: center;
+  border: none;
+}
+
+.btn-get-ticket {
+  background-color: #f61253;
+  height: 50px;
+  width: 40vw;
+  color: #fff;
+  padding: 5px 20px;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn-get-ticket:hover {
+  opacity: 0.9;
+}
