@@ -17,8 +17,9 @@ import Footer from "../Footer";
 import EventCard from "./EventCard";
 
 function Home() {
-  const [activeTab, setActiveTab] = useState("most_recent");
+  const [activeTab, setActiveTab] = useState("");
   const [categories, setCategories] = useState([]);
+  const [tags, setTags] = useState([]);
   const [events, setEvents] = useState([]);
   const navigate = useNavigate();
 
@@ -33,9 +34,12 @@ function Home() {
 
   const handleGetCategories = () => {
     getCategories().then((response) => {
-      const { success, data } = response || {};
+      const { success, categories = [], tags = [] } = response || {};
       if (success) {
-        setCategories(data);
+        const activeTab = tags[0];
+        setActiveTab(activeTab?.label);
+        setCategories(categories);
+        setTags(tags);
       }
     });
   };
@@ -110,56 +114,18 @@ function Home() {
         <section className="explore-section">
           <h1>Explore Events</h1>
           <ul className="explore-tags">
-            <li className="explore-tag">
-              <button
-                onClick={() => handleSetActiveTab("most_recent")}
-                className={`btn-explore ${
-                  activeTab === "most_recent" && "btn-explore-active"
-                }`}
-              >
-                Most recent
-              </button>
-            </li>
-            <li className="explore-tag">
-              <button
-                onClick={() => handleSetActiveTab("trending")}
-                className={`btn-explore ${
-                  activeTab === "trending" && "btn-explore-active"
-                }`}
-              >
-                Trending
-              </button>
-            </li>
-            <li className="explore-tag">
-              <button
-                onClick={() => handleSetActiveTab("popular_artists")}
-                className={`btn-explore ${
-                  activeTab === "popular_artists" && "btn-explore-active"
-                }`}
-              >
-                Popular artists
-              </button>
-            </li>
-            <li className="explore-tag">
-              <button
-                onClick={() => handleSetActiveTab("this_month")}
-                className={`btn-explore ${
-                  activeTab === "this_month" && "btn-explore-active"
-                }`}
-              >
-                This month
-              </button>
-            </li>
-            <li className="explore-tag">
-              <button
-                onClick={() => handleSetActiveTab("popular_locations")}
-                className={`btn-explore ${
-                  activeTab === "popular_locations" && "btn-explore-active"
-                }`}
-              >
-                Popular locations
-              </button>
-            </li>
+            {tags.map(({ name, label }, index) => (
+              <li className="explore-tag" key={index}>
+                <button
+                  onClick={() => handleSetActiveTab(label)}
+                  className={`btn-explore ${
+                    activeTab === label && "btn-explore-active"
+                  }`}
+                >
+                  {name}
+                </button>
+              </li>
+            ))}
           </ul>
           <div className="explore-items">
             {events.map((event, index) => (
