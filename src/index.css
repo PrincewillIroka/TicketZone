@@ -21,6 +21,7 @@ li {
 button {
   border: none;
   background-color: transparent;
+  user-select: none;
 }
 
 h1,
