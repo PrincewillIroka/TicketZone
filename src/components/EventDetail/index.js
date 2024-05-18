@@ -13,6 +13,7 @@ function EventDetail() {
     venue = "",
     price = "",
     description = "",
+    category = {},
   } = state;
   const [activeImage, setActiveImage] = useState(images[0]);
   const [ticketQuantity, setTicketQuantity] = useState(1);
@@ -23,7 +24,7 @@ function EventDetail() {
       <div className="event-detail-container">
         <section className="event-detail-section">
           <div className="event-detail-breadcrumb">
-            <span>Sports</span>/<span>Football</span>
+            <span>{category.name}</span>/<span>Football</span>
           </div>
           <div className="event-detail-row">
             <div className="event-detail-img-container">
