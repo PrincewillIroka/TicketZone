@@ -13,7 +13,7 @@ function Footer() {
             experiences.
           </span>
           <span className="footer-app-copyright">
-            Copyright &copy; 2024. Tix Technology Inc. All rights reserved.
+            Copyright &copy; 2024. Ticket Zone. All rights reserved.
           </span>
         </div>
         <div className="footer-col footer-col-1">

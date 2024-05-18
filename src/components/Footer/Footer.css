@@ -21,8 +21,9 @@ footer {
 
 .footer-logo {
   margin-bottom: 20px;
-  height: 50px;
-  width: 100px;
+  height: 40px;
+  width: 80px;
+  object-fit: cover;
   border-radius: 5px;
 }
 
