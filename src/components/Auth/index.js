@@ -39,13 +39,13 @@ function Auth() {
     setIsLoading(true);
     await userLogin({ email, password }).then((response) => {
       const { success, data: user } = response;
+      setIsLoading(false);
       if (success) {
         localStorage.setItem("isUserLoggedIn", JSON.stringify(true));
         localStorage.setItem("user", JSON.stringify(user));
         dispatch({ type: "GET_USER_SUCCESS", payload: user });
         navigate("/dashboard", { replace: true });
       }
-      setIsLoading(false);
     });
   };
 
@@ -53,10 +53,10 @@ function Auth() {
     setIsLoading(true);
     await userSignUp({ email, password }).then((response) => {
       const { success, data: user } = response;
+      setIsLoading(false);
       if (success) {
         navigate("/login", { replace: true });
       }
-      setIsLoading(false);
     });
   };
 
