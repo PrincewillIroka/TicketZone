@@ -245,7 +245,8 @@
 
 .mailinglist-input {
   height: 40px;
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   width: 18vw;
   border: 1px solid #f8f8f8;
   font-size: 16px;
@@ -254,12 +255,13 @@
 
 .mailinglist-btn {
   background-color: #f61253;
-  margin-left: 10px;
   height: 40px;
   width: 80px;
   color: #fff;
-  border-radius: 5px;
   font-size: 16px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
 }
 
 .user-profile-icon {
