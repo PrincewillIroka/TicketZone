@@ -32,4 +32,20 @@ const getEvents = () => {
   });
 };
 
-export { getCategories, getEvents };
+const getEventsCategory = () => {
+  return new Promise((resolve, reject) => {
+    const url = `${APP_BACKEND}/api/eventsCategory`;
+
+    fetch(url, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((response) => resolve(response))
+      .catch((error) => {
+        console.error(error);
+        return reject(error);
+      });
+  });
+};
+
+export { getCategories, getEvents, getEventsCategory };

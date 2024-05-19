@@ -17,10 +17,12 @@ import Footer from "../Footer";
 import EventCard from "./EventCard";
 
 function Home() {
-  const [activeTab, setActiveTab] = useState("");
+  const defaultTag = { name: "All", label: "all" };
+  const [activeTab, setActiveTab] = useState(defaultTag.label);
   const [categories, setCategories] = useState([]);
-  const [tags, setTags] = useState([]);
+  const [displayedTags, setDisplayedTags] = useState([defaultTag]);
   const [events, setEvents] = useState([]);
+  const [eventsClone, setEventsClone] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,17 +31,28 @@ function Home() {
   }, []);
 
   const handleSetActiveTab = (activeTab) => {
+    let filteredEvents;
+
+    if (activeTab === "all") {
+      filteredEvents = eventsClone;
+    } else {
+      filteredEvents = eventsClone.filter((event) => {
+        const { tags = [] } = event;
+        const isValue = tags.includes(activeTab);
+        return isValue;
+      });
+    }
     setActiveTab(activeTab);
+    setEvents(filteredEvents);
   };
 
   const handleGetCategories = () => {
     getCategories().then((response) => {
       const { success, categories = [], tags = [] } = response || {};
       if (success) {
-        const activeTab = tags[0];
-        setActiveTab(activeTab?.label);
         setCategories(categories);
-        setTags(tags);
+        const arr = displayedTags.concat(tags);
+        setDisplayedTags(arr);
       }
     });
   };
@@ -49,6 +62,7 @@ function Home() {
       const { success, data } = response || {};
       if (success) {
         setEvents(data);
+        setEventsClone(data);
       }
     });
   };
@@ -114,7 +128,7 @@ function Home() {
         <section className="explore-section">
           <h1>Explore Events</h1>
           <ul className="explore-tags">
-            {tags.map(({ name, label }, index) => (
+            {displayedTags.map(({ name, label }, index) => (
               <li className="explore-tag" key={index}>
                 <button
                   onClick={() => handleSetActiveTab(label)}
