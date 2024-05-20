@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { BsFileMusic } from "react-icons/bs";
@@ -17,8 +17,9 @@ import Header from "../Header";
 import Footer from "../Footer";
 import EventCard from "./EventCard";
 
+const defaultTag = { name: "All", label: "all" };
+
 function Home() {
-  const defaultTag = { name: "All", label: "all" };
   const [activeTab, setActiveTab] = useState(defaultTag.label);
   const [categories, setCategories] = useState([]);
   const [displayedTags, setDisplayedTags] = useState([defaultTag]);
@@ -26,11 +27,6 @@ function Home() {
   const [eventsClone, setEventsClone] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    handleGetCategories();
-    handleGetEvents();
-  }, []);
 
   const handleSetActiveTab = (activeTab) => {
     let filteredEvents;
@@ -48,7 +44,7 @@ function Home() {
     setEvents(filteredEvents);
   };
 
-  const handleGetCategories = () => {
+  const handleGetCategories = useCallback(() => {
     getCategories().then((response) => {
       const { success, categories = [], tags = [] } = response || {};
       if (success) {
@@ -58,7 +54,12 @@ function Home() {
         setIsLoading(false);
       }
     });
-  };
+  }, []);
+
+  useEffect(() => {
+    handleGetCategories();
+    handleGetEvents();
+  }, [handleGetCategories]);
 
   const handleGetEvents = () => {
     getEvents().then((response) => {
@@ -118,8 +119,8 @@ function Home() {
         </section>
         <section className="browse-section">
           {isLoading
-            ? createArrayItems(6).map(() => (
-                <div className="browse-category">
+            ? createArrayItems(6).map((item, index) => (
+                <div className="browse-category" key={index}>
                   <div className="browse-content"></div>
                 </div>
               ))
@@ -154,8 +155,11 @@ function Home() {
           </ul>
           <div className="explore-items">
             {isLoading ? (
-              createArrayItems(8).map(() => (
-                <div className="explore-item-wrapper shimmer-bg"></div>
+              createArrayItems(8).map((item, index) => (
+                <div
+                  className="explore-item-wrapper shimmer-bg"
+                  key={index}
+                ></div>
               ))
             ) : !events.length ? (
               <div className="explore-item-none">No event found</div>
