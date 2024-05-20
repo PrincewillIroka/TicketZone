@@ -1,3 +1,7 @@
 .events-category-container {
   padding: 10% 10% 5%;
 }
+
+.events-category-heading {
+  margin-bottom: 30px;
+}

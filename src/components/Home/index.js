@@ -97,6 +97,12 @@ function Home() {
     navigate(page);
   };
 
+  const handleNavigateToCategory = (e, { name: categoryName, alias }) => {
+    e.preventDefault();
+    const page = `/explore-category/${alias}`;
+    navigate(page, { state: { categoryName } });
+  };
+
   return (
     <div>
       <Header />
@@ -125,16 +131,16 @@ function Home() {
                 </div>
               ))
             : categories.map(({ name, alias }, index) => (
-                <a
+                <div
                   className="browse-category"
-                  href={`/explore-category/${alias}`}
                   key={index}
+                  onClick={(e) => handleNavigateToCategory(e, { name, alias })}
                 >
                   <span className="browse-content">
                     {getCategoryIcon(name)}
                   </span>
                   <span className="browse-item">{name}</span>
-                </a>
+                </div>
               ))}
         </section>
         <section className="explore-section">
@@ -162,7 +168,7 @@ function Home() {
                 ></div>
               ))
             ) : !events.length ? (
-              <div className="explore-item-none">No event found</div>
+              <div className="explore-item-none">No event found here.</div>
             ) : (
               events.map((event, index) => (
                 <EventCard event={event} key={index} />
