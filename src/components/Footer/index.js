@@ -20,16 +20,26 @@ function Footer() {
           <b className="footer-col-heading">Products</b>
           <ul>
             <li>Ticketing</li>
-            <li>Box Office</li>
-            <li>Cashless Payments</li>
           </ul>
         </div>
         <div className="footer-col footer-col-2">
           <b className="footer-col-heading">Company</b>
           <ul>
-            <li>About Us</li>
-            <li>FAQ</li>
-            <li>Blog</li>
+            <li>
+              <a href="/about-us" className="footer-social-icon-container">
+                About Us
+              </a>
+            </li>
+            <li>
+              <a href="/faq" className="footer-social-icon-container">
+                FAQ
+              </a>
+            </li>
+            <li>
+              <a href="/blog" className="footer-social-icon-container">
+                Blog
+              </a>
+            </li>
           </ul>
         </div>
         <div className="footer-col footer-col-3">

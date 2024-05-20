@@ -18,7 +18,7 @@ function EventsCategory() {
   }, []);
 
   const handleGetEventsCategory = () => {
-    getEventsCategory().then((response) => {
+    getEventsCategory({ alias }).then((response) => {
       const { success, data } = response || {};
       if (success) {
         setIsLoading(false);
