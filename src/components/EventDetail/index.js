@@ -1,12 +1,14 @@
 import { React, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { FaMinus, FaPlus } from "react-icons/fa6";
+import { useStateValue } from "store/stateProvider";
 import Header from "../Header";
 import Footer from "../Footer";
 import "./EventDetail.css";
 
 function EventDetail() {
-  const { state } = useLocation();
+  const { state: locationState } = useLocation();
+  const { dispatch } = useStateValue();
   const {
     title = "",
     images = [],
@@ -14,9 +16,23 @@ function EventDetail() {
     price = "",
     description = "",
     category = {},
-  } = state;
+  } = locationState;
   const [activeImage, setActiveImage] = useState(images[0]);
   const [ticketQuantity, setTicketQuantity] = useState(1);
+
+  const handleTicketQuantity = (e) => {
+    e.preventDefault();
+    const value = e.target.value;
+    setTicketQuantity(Number(value));
+  };
+
+  const handleGetTicket = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: "ADD_TICKET_TO_CART",
+      payload: { ticket: locationState, ticketQuantity },
+    });
+  };
 
   return (
     <div>
@@ -30,8 +46,8 @@ function EventDetail() {
             <div className="event-detail-img-container">
               <img src={activeImage} className="event-detail-img" alt="" />
               <div className="event-detail-gallery">
-                {images.map((image) => (
-                  <div className="event-detail-gallery-single">
+                {images.map((image, index) => (
+                  <div className="event-detail-gallery-single" key={index}>
                     <img
                       src={image}
                       className="event-detail-gallery-img"
@@ -68,7 +84,11 @@ function EventDetail() {
                   >
                     <FaMinus className="icon-quantity" />
                   </div>
-                  <input value={ticketQuantity} className="input-quantity" />
+                  <input
+                    value={ticketQuantity}
+                    className="input-quantity"
+                    onChange={(e) => handleTicketQuantity(e)}
+                  />
                   <div
                     className="btn-quantity"
                     onClick={() => setTicketQuantity(ticketQuantity + 1)}
@@ -77,7 +97,12 @@ function EventDetail() {
                   </div>
                 </div>
               </div>
-              <button className="btn-get-ticket">Get Ticket</button>
+              <button
+                className="btn-get-ticket"
+                onClick={(e) => handleGetTicket(e)}
+              >
+                Get Ticket
+              </button>
             </div>
           </div>
         </section>

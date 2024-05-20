@@ -7,6 +7,15 @@ const userReducer = (state, action) => {
         isUserLoggedIn: true,
       };
     }
+    case "ADD_TICKET_TO_CART": {
+      let { ticketCart = [] } = state;
+      const newTicket = action.payload;
+      ticketCart = ticketCart.concat(newTicket);
+      return {
+        ...state,
+        ticketCart,
+      };
+    }
     default:
       return state;
   }
