@@ -1,5 +1,5 @@
 .banner-section {
-  height: 60vh;
+  height: 64vh;
   background-image: url("../../assets/rear-view-excited-fans-having-fun-music-festival-taking-pictures-stage-with-their-smart-phones-copy-space_637285-607.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -51,9 +51,11 @@
 
 .browse-section {
   background-color: #f4f2f2;
-  padding: 40px 10%;
+  padding: 0 10%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 24vh;
 }
 
 .browse-category {

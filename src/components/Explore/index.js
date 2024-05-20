@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { getEvents } from "services/eventServices";
+import EventCard from "components/Home/EventCard";
+import { createArrayItems } from "utils";
 import Header from "../Header";
 import Footer from "../Footer";
-import EventCard from "components/Home/EventCard";
+import "./Explore.css";
 
 function Explore() {
   const [events, setEvents] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     handleGetEvents();
@@ -16,6 +19,7 @@ function Explore() {
       const { success, data } = response || {};
       if (success) {
         setEvents(data);
+        setIsLoading(false);
       }
     });
   };
@@ -26,9 +30,20 @@ function Explore() {
       <div className="layout-container">
         <section className="explore-section">
           <div className="explore-items">
-            {events.map((event, index) => (
-              <EventCard event={event} key={index} />
-            ))}
+            {isLoading ? (
+              createArrayItems(8).map((item, index) => (
+                <div
+                  className="explore-item-wrapper shimmer-bg"
+                  key={index}
+                ></div>
+              ))
+            ) : !events.length ? (
+              <div className="explore-item-none-2">No event found</div>
+            ) : (
+              events.map((event, index) => (
+                <EventCard event={event} key={index} />
+              ))
+            )}
           </div>
         </section>
       </div>

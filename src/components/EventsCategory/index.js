@@ -4,11 +4,13 @@ import Header from "../Header";
 import Footer from "../Footer";
 import "./EventsCategory.css";
 import { getEventsCategory } from "services/eventServices";
+import EventCard from "components/Home/EventCard";
 
 function EventsCategory() {
+  const { pathname } = useLocation();
   const [isLoading, setIsLoading] = useState(true);
   const [eventsCategory, setEventsCategory] = useState([]);
-  const { pathname } = useLocation();
+  const [events, setEvents] = useState([]);
   const alias = pathname.split("/")[2];
 
   useEffect(() => {
@@ -18,9 +20,9 @@ function EventsCategory() {
   const handleGetEventsCategory = () => {
     getEventsCategory().then((response) => {
       const { success, data } = response || {};
-      console.log({ data });
       if (success) {
-        // setEvents(data);
+        setIsLoading(false);
+        setEvents(data);
       }
     });
   };
@@ -29,7 +31,15 @@ function EventsCategory() {
     <div>
       <Header />
       <div className="events-category-container">
-        {isLoading ? <div className="">Loading...</div> : <div>Events</div>}
+        {isLoading ? (
+          <div className="">Loading...</div>
+        ) : (
+          <div className="explore-items">
+            {events.map((event, index) => (
+              <EventCard event={event} key={index} />
+            ))}
+          </div>
+        )}
 
         {/* <Footer /> */}
       </div>
