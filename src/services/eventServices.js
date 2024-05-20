@@ -32,12 +32,17 @@ const getEvents = () => {
   });
 };
 
-const getEventsCategory = () => {
+const getEventsCategory = (payload) => {
   return new Promise((resolve, reject) => {
     const url = `${APP_BACKEND}/api/eventsCategory`;
 
     fetch(url, {
-      method: "GET",
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
     })
       .then((response) => response.json())
       .then((response) => resolve(response))
