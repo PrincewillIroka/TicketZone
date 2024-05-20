@@ -1,12 +1,12 @@
 .sell-tickets-container {
-  padding: 90px 10% 5%;
+  padding: 10% 10% 5%;
 }
 
 .sell-tickets-section {
   display: flex;
   justify-content: space-between;
-  margin-top: 50px;
-  height: 100vh;
+  margin-top: 30px;
+  height: 60vh;
 }
 
 .sell-tickets-col {
@@ -16,8 +16,8 @@
 }
 
 .sell-tickets-input {
-  height: 30px;
-  margin-bottom: 15px;
+  height: 35px;
+  margin-bottom: 25px;
   font-size: 16px;
   padding: 0 5px;
 }
@@ -25,20 +25,48 @@
 .sell-tickets-select {
   height: 35px;
   font-size: 16px;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 .sell-tickets-row {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 60px;
 }
 
 .sell-tickets-quantity {
-  height: 30px;
+  height: 35px;
   font-size: 16px;
+  width: 25%;
 }
 
 .sell-tickets-price {
-  height: 30px;
   font-size: 16px;
+  width: 25%;
+}
+
+.sell-tickets-preview-wrapper {
+  /* border: 1px solid #ccc;
+  width: 50%; */
+}
+
+.sell-tickets-preview {
+  margin-bottom: 20px;
+}
+
+.btn-sell-ticket {
+  background-color: #f61253;
+  height: 50px;
+  width: 100%;
+  color: #fff;
+  padding: 5px 20px;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn-sell-ticket:hover {
+  opacity: 0.9;
 }

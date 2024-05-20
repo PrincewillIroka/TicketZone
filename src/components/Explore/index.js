@@ -29,6 +29,7 @@ function Explore() {
       <Header />
       <div className="layout-container">
         <section className="explore-section">
+          <h3 className="events-category-heading">Explore Events</h3>
           <div className="explore-items">
             {isLoading ? (
               createArrayItems(8).map((item, index) => (
@@ -38,7 +39,7 @@ function Explore() {
                 ></div>
               ))
             ) : !events.length ? (
-              <div className="explore-item-none-2">No event found</div>
+              <div className="explore-item-none-2">No event found here.</div>
             ) : (
               events.map((event, index) => (
                 <EventCard event={event} key={index} />

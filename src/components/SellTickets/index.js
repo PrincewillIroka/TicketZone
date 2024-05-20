@@ -13,6 +13,7 @@ function SellTickets() {
     <div>
       <Header />
       <div className="sell-tickets-container">
+        <h3>Event Details:</h3>
         <section className="sell-tickets-section">
           <div className="sell-tickets-col">
             <input
@@ -45,34 +46,39 @@ function SellTickets() {
             </select>
             <div className="sell-tickets-row">
               <input
-                value=""
                 placeholder="Quantity of tickets"
                 className="sell-tickets-quantity"
               />
+              <select className="sell-tickets-price">
+                <option>Currency</option>
+                <option>NGN</option>
+              </select>
               <input
-                value=""
                 placeholder="Price per ticket"
                 className="sell-tickets-price"
               />
             </div>
+            <button className="btn-sell-ticket">Continue</button>
           </div>
           <div className="sell-tickets-col">
-            <span>Preview</span>
-            <div>
-              <span>{eventTitle ? eventTitle : "Title of Event"}</span>
-            </div>
-            <div>
-              <span>{eventVenue ? eventVenue : "Venue of Event"}</span>
-            </div>
-            <div>
-              <span>
-                {eventDescription ? eventDescription : "Description of Event"}
-              </span>
-            </div>
-            <div>
-              <span>
-                {eventCategory ? eventCategory : "No category selected"}
-              </span>
+            <div className="sell-tickets-preview-wrapper">
+              <span>Preview</span>
+              <div className="sell-tickets-preview">
+                <span>{eventTitle ? eventTitle : "Title of Event"}</span>
+              </div>
+              <div className="sell-tickets-preview">
+                <span>{eventVenue ? eventVenue : "Venue of Event"}</span>
+              </div>
+              <div className="sell-tickets-preview">
+                <span>
+                  {eventDescription ? eventDescription : "Description of Event"}
+                </span>
+              </div>
+              <div className="sell-tickets-preview">
+                <span>
+                  {eventCategory ? eventCategory : "No category selected"}
+                </span>
+              </div>
             </div>
           </div>
         </section>

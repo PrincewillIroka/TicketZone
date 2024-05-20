@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
+import { FiShoppingCart } from "react-icons/fi";
 import { useStateValue } from "store/stateProvider";
 import "./Header.css";
 
@@ -8,7 +9,7 @@ function Header() {
   const { state } = useStateValue();
   const navigate = useNavigate();
   const location = useLocation();
-  const { isUserLoggedIn } = state;
+  const { isUserLoggedIn, ticketCart = [] } = state;
 
   const handleNavigate = (page) => {
     navigate(page);
@@ -57,11 +58,17 @@ function Header() {
               Login
             </button>
           ) : (
-            <FaCircleUser
-              className="user-profile-icon"
-              title="Dashboard"
-              onClick={() => handleNavigate("/dashboard")}
-            />
+            <div className="header-icons">
+              <FaCircleUser
+                className="user-profile-icon"
+                title="Dashboard"
+                onClick={() => handleNavigate("/dashboard")}
+              />
+              <div className="cart-icon-wrapper">
+                <FiShoppingCart className="cart-icon" />
+                <span className="cart-count">{ticketCart.length}</span>
+              </div>
+            </div>
           )}
         </li>
       </ul>
