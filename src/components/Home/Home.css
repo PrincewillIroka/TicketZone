@@ -1,5 +1,5 @@
 .banner-section {
-  height: 60vh;
+  height: 64vh;
   background-image: url("../../assets/rear-view-excited-fans-having-fun-music-festival-taking-pictures-stage-with-their-smart-phones-copy-space_637285-607.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -51,9 +51,11 @@
 
 .browse-section {
   background-color: #f4f2f2;
-  padding: 40px 10%;
+  padding: 0 10%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 24vh;
 }
 
 .browse-category {
@@ -268,4 +270,42 @@
   color: #fff;
   font-size: 25px;
   cursor: pointer;
+}
+
+.shimmer-bg {
+  animation-duration: 2.2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: shimmer;
+  animation-timing-function: linear;
+  background: #ddd;
+  background: linear-gradient(to right, #f6f6f6 8%, #f0f0f0 18%, #f6f6f6 33%);
+  background-size: 100% 100%;
+  height: 100%;
+}
+
+@-webkit-keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1200px 0;
+  }
+  100% {
+    background-position: 1200px 0;
+  }
+}
+
+.explore-item-wrapper {
+  height: 320px;
+}
+
+.explore-item-none {
+  height: 320px;
 }

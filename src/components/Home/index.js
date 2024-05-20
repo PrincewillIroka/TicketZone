@@ -11,6 +11,7 @@ import { FaArtstation, FaBible } from "react-icons/fa";
 import { GrTechnology } from "react-icons/gr";
 import CurveSvg from "assets/Curve.svg";
 import { getCategories, getEvents } from "services/eventServices";
+import { createArrayItems } from "utils";
 import "./Home.css";
 import Header from "../Header";
 import Footer from "../Footer";
@@ -23,6 +24,7 @@ function Home() {
   const [displayedTags, setDisplayedTags] = useState([defaultTag]);
   const [events, setEvents] = useState([]);
   const [eventsClone, setEventsClone] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,8 +53,9 @@ function Home() {
       const { success, categories = [], tags = [] } = response || {};
       if (success) {
         setCategories(categories);
-        const arr = displayedTags.concat(tags);
+        const arr = [defaultTag].concat(tags);
         setDisplayedTags(arr);
+        setIsLoading(false);
       }
     });
   };
@@ -114,16 +117,24 @@ function Home() {
           </div>
         </section>
         <section className="browse-section">
-          {categories.map(({ name, alias }, index) => (
-            <a
-              className="browse-category"
-              href={`/explore-category/${alias}`}
-              key={index}
-            >
-              <span className="browse-content">{getCategoryIcon(name)}</span>
-              <span className="browse-item">{name}</span>
-            </a>
-          ))}
+          {isLoading
+            ? createArrayItems(6).map(() => (
+                <div className="browse-category">
+                  <div className="browse-content"></div>
+                </div>
+              ))
+            : categories.map(({ name, alias }, index) => (
+                <a
+                  className="browse-category"
+                  href={`/explore-category/${alias}`}
+                  key={index}
+                >
+                  <span className="browse-content">
+                    {getCategoryIcon(name)}
+                  </span>
+                  <span className="browse-item">{name}</span>
+                </a>
+              ))}
         </section>
         <section className="explore-section">
           <h1>Explore Events</h1>
@@ -142,9 +153,17 @@ function Home() {
             ))}
           </ul>
           <div className="explore-items">
-            {events.map((event, index) => (
-              <EventCard event={event} key={index} />
-            ))}
+            {isLoading ? (
+              createArrayItems(8).map(() => (
+                <div className="explore-item-wrapper shimmer-bg"></div>
+              ))
+            ) : !events.length ? (
+              <div className="explore-item-none">No event found</div>
+            ) : (
+              events.map((event, index) => (
+                <EventCard event={event} key={index} />
+              ))
+            )}
           </div>
           <div className="explore-more">
             <button className="btn-explore-show-more">Show more</button>
