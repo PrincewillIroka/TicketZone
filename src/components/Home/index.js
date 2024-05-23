@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { BsFileMusic } from "react-icons/bs";
 import {
@@ -26,11 +26,7 @@ function Home() {
   const navigate = useNavigate();
   const { state = {}, dispatch } = useStateValue();
   const { homePage = {} } = state;
-  let {
-    categories = [],
-    displayedTags = [],
-    events = [],
-  } = homePage;
+  let { categories = [], displayedTags = [], events = [] } = homePage;
 
   const handleSetActiveTab = (activeTab) => {
     setActiveTab(activeTab);
@@ -96,12 +92,6 @@ function Home() {
     navigate(page);
   };
 
-  const handleNavigateToCategory = (e, { name: categoryName, alias }) => {
-    e.preventDefault();
-    const page = `/explore-category/${alias}`;
-    navigate(page, { state: { categoryName } });
-  };
-
   return (
     <div>
       <Header />
@@ -129,18 +119,22 @@ function Home() {
                   <div className="browse-content"></div>
                 </div>
               ))
-            : categories.map(({ name, alias }, index) => (
-                <div
-                  className="browse-category"
-                  key={index}
-                  onClick={(e) => handleNavigateToCategory(e, { name, alias })}
-                >
-                  <span className="browse-content">
-                    {getCategoryIcon(name)}
-                  </span>
-                  <span className="browse-item">{name}</span>
-                </div>
-              ))}
+            : categories.map(({ name, alias }, index) => {
+                const page = `/explore-category/${alias}`;
+                return (
+                  <Link
+                    className="browse-category"
+                    to={page}
+                    state={{ categoryName: name }}
+                    key={index}
+                  >
+                    <span className="browse-content">
+                      {getCategoryIcon(name)}
+                    </span>
+                    <span className="browse-item">{name}</span>
+                  </Link>
+                );
+              })}
         </section>
         <section className="explore-section">
           <h1>Explore Events</h1>
