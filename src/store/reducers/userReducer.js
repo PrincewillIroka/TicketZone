@@ -9,8 +9,29 @@ const userReducer = (state, action) => {
     }
     case "ADD_TICKET_TO_CART": {
       let { ticketCart = [] } = state;
-      const newTicket = action.payload;
-      ticketCart = ticketCart.concat(newTicket);
+      const newItem = action.payload;
+      const { ticket = {}, ticketQuantity = 0 } = newItem;
+      const ticketId = ticket._id;
+
+      const isTicketInCart = ticketCart.find(
+        (tc) => tc.ticket._id === ticketId
+      );
+
+      if (isTicketInCart) {
+        if (ticketQuantity === 0) {
+          ticketCart = ticketCart.filter((tc) => tc.ticket._id !== ticketId);
+        } else {
+          ticketCart = ticketCart.map((tc) => {
+            if (tc.ticket._id === ticketId) {
+              tc.ticketQuantity = ticketQuantity;
+            }
+            return tc;
+          });
+        }
+      } else {
+        ticketCart = ticketCart.concat(newItem);
+      }
+
       return {
         ...state,
         ticketCart,

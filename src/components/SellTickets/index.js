@@ -9,6 +9,11 @@ function SellTickets() {
   const [eventDescription, setEventDescription] = useState("");
   const [eventCategory, setEventCategory] = useState("");
 
+  const handleSelectCategory = (e) => {
+    e.preventDefault();
+    setEventCategory(e.target.value);
+  };
+
   return (
     <div>
       <Header />
@@ -34,7 +39,10 @@ function SellTickets() {
               value={eventDescription}
               onChange={(e) => setEventDescription(e.target.value)}
             />
-            <select className="sell-tickets-select">
+            <select
+              className="sell-tickets-select"
+              onChange={(e) => handleSelectCategory(e)}
+            >
               <option>Category</option>
               <option>Music</option>
               <option>Sports</option>
