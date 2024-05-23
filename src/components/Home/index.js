@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, memo } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { BsFileMusic } from "react-icons/bs";
@@ -47,14 +47,9 @@ function Home() {
         setIsLoading(false);
       }
     });
-  }, []);
+  }, [dispatch]);
 
-  useEffect(() => {
-    handleGetCategories();
-    handleGetEvents();
-  }, [handleGetCategories]);
-
-  const handleGetEvents = () => {
+  const handleGetEvents = useCallback(() => {
     getEvents().then((response) => {
       const { success, data } = response || {};
       if (success) {
@@ -64,7 +59,12 @@ function Home() {
         });
       }
     });
-  };
+  }, [dispatch]);
+
+  useEffect(() => {
+    handleGetCategories();
+    handleGetEvents();
+  }, [handleGetCategories, handleGetEvents]);
 
   const getCategoryIcon = (name) => {
     let icon,
@@ -199,4 +199,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default memo(Home);
