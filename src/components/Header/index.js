@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
@@ -27,24 +27,24 @@ function Header() {
     <header>
       <ul className="nav-links">
         <li>
-          <a href="/">
+          <Link to="/">
             <img src="/logo.png" className="img-logo" alt="Logo" />
-          </a>
+          </Link>
         </li>
         {/* <li className={`${getActiveTab("") && "nav-links-active"}`}>
           <a href="/">Home</a>
         </li> */}
         <li className={`${getActiveTab("explore") && "nav-links-active"}`}>
-          <a href="/explore">Explore</a>
+          <Link to="/explore">Explore</Link>
         </li>
         <li className={`${getActiveTab("buy-a-ticket") && "nav-links-active"}`}>
-          <a href="/buy-a-ticket">Buy A Ticket</a>
+          <Link to="/buy-a-ticket">Buy A Ticket</Link>
         </li>
         <li className={`${getActiveTab("sell-tickets") && "nav-links-active"}`}>
-          <a href="/sell-tickets">Sell Tickets</a>
+          <Link to="/sell-tickets">Sell Tickets</Link>
         </li>
         <li className={`${getActiveTab("how-it-works") && "nav-links-active"}`}>
-          <a href="/how-it-works">How It Works</a>
+          <Link to="/how-it-works">How It Works</Link>
         </li>
       </ul>
       <ul className="nav-controls">

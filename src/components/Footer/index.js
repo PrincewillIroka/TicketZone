@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import "./Footer.css";
 
@@ -26,19 +27,19 @@ function Footer() {
           <b className="footer-col-heading">Company</b>
           <ul>
             <li>
-              <a href="/about-us" className="footer-social-icon-container">
+              <Link to="/about-us" className="footer-social-icon-container">
                 About Us
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/faq" className="footer-social-icon-container">
+              <Link to="/faq" className="footer-social-icon-container">
                 FAQ
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/blog" className="footer-social-icon-container">
+              <Link to="/blog" className="footer-social-icon-container">
                 Blog
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
