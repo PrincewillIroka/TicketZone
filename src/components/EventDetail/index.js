@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import { useStateValue } from "store/stateProvider";
@@ -8,8 +8,9 @@ import "./EventDetail.css";
 
 function EventDetail() {
   const { state: locationState } = useLocation();
-  const { dispatch } = useStateValue();
+  const { state, dispatch } = useStateValue();
   const {
+    _id = "",
     title = "",
     images = [],
     venue = "",
@@ -17,21 +18,37 @@ function EventDetail() {
     description = "",
     category = {},
   } = locationState;
+  const { ticketCart = [] } = state;
   const [activeImage, setActiveImage] = useState(images[0]);
-  const [ticketQuantity, setTicketQuantity] = useState(1);
+  const [ticketQuantity, setTicketQuantity] = useState(0);
+
+  const isTicketInCart = useMemo(
+    () => ticketCart.find((tc) => tc.ticket._id === _id),
+    [ticketCart, _id]
+  );
 
   const handleTicketQuantity = (e) => {
     e.preventDefault();
     const value = e.target.value;
-    setTicketQuantity(Number(value));
+    if (value === "") {
+      handleSetTicketQuantity(0);
+    } else {
+      handleSetTicketQuantity(Number(value));
+    }
   };
 
-  const handleGetTicket = (e) => {
-    e.preventDefault();
+  const handleAddTicket = (value) => {
     dispatch({
       type: "ADD_TICKET_TO_CART",
-      payload: { ticket: locationState, ticketQuantity },
+      payload: { ticket: locationState, ticketQuantity: value },
     });
+  };
+
+  const handleSetTicketQuantity = (value) => {
+    setTicketQuantity(value);
+    if (isTicketInCart) {
+      handleAddTicket(value);
+    }
   };
 
   return (
@@ -78,8 +95,8 @@ function EventDetail() {
                   <div
                     className="btn-quantity"
                     onClick={() => {
-                      ticketQuantity > 1 &&
-                        setTicketQuantity(ticketQuantity - 1);
+                      ticketQuantity > 0 &&
+                        handleSetTicketQuantity(ticketQuantity - 1);
                     }}
                   >
                     <FaMinus className="icon-quantity" />
@@ -88,21 +105,33 @@ function EventDetail() {
                     value={ticketQuantity}
                     className="input-quantity"
                     onChange={(e) => handleTicketQuantity(e)}
+                    placeholder={0}
                   />
                   <div
                     className="btn-quantity"
-                    onClick={() => setTicketQuantity(ticketQuantity + 1)}
+                    onClick={() => handleSetTicketQuantity(ticketQuantity + 1)}
                   >
                     <FaPlus className="icon-quantity" />
                   </div>
                 </div>
               </div>
-              <button
-                className="btn-get-ticket"
-                onClick={(e) => handleGetTicket(e)}
-              >
-                Get Ticket
-              </button>
+              {isTicketInCart ? (
+                <button
+                  className="btn-get-ticket"
+                  onClick={() => handleSetTicketQuantity(0)}
+                >
+                  Remove Ticket From Cart
+                </button>
+              ) : (
+                <button
+                  className="btn-get-ticket"
+                  onClick={() =>
+                    ticketQuantity > 0 && handleAddTicket(ticketQuantity)
+                  }
+                >
+                  Add Ticket To Cart
+                </button>
+              )}
             </div>
           </div>
         </section>
