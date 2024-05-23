@@ -12,6 +12,7 @@ import { GrTechnology } from "react-icons/gr";
 import CurveSvg from "assets/Curve.svg";
 import { getCategories, getEvents } from "services/eventServices";
 import { createArrayItems } from "utils";
+import { useStateValue } from "store/stateProvider";
 import "./Home.css";
 import Header from "../Header";
 import Footer from "../Footer";
@@ -21,36 +22,32 @@ const defaultTag = { name: "All", label: "all" };
 
 function Home() {
   const [activeTab, setActiveTab] = useState(defaultTag.label);
-  const [categories, setCategories] = useState([]);
-  const [displayedTags, setDisplayedTags] = useState([defaultTag]);
-  const [events, setEvents] = useState([]);
-  const [eventsClone, setEventsClone] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+  const { state = {}, dispatch } = useStateValue();
+  const { homePage = {} } = state;
+  let {
+    categories = [],
+    displayedTags = [],
+    events = [],
+  } = homePage;
 
   const handleSetActiveTab = (activeTab) => {
-    let filteredEvents;
-
-    if (activeTab === "all") {
-      filteredEvents = eventsClone;
-    } else {
-      filteredEvents = eventsClone.filter((event) => {
-        const { tags = [] } = event;
-        const isValue = tags.includes(activeTab);
-        return isValue;
-      });
-    }
     setActiveTab(activeTab);
-    setEvents(filteredEvents);
+    dispatch({
+      type: "FILTER_HOME_PAGE_EVENTS",
+      payload: { activeTab },
+    });
   };
 
   const handleGetCategories = useCallback(() => {
     getCategories().then((response) => {
       const { success, categories = [], tags = [] } = response || {};
       if (success) {
-        setCategories(categories);
-        const arr = [defaultTag].concat(tags);
-        setDisplayedTags(arr);
+        dispatch({
+          type: "UPDATE_HOME_PAGE_CATEGORIES",
+          payload: { categories, displayedTags: tags },
+        });
         setIsLoading(false);
       }
     });
@@ -65,8 +62,10 @@ function Home() {
     getEvents().then((response) => {
       const { success, data } = response || {};
       if (success) {
-        setEvents(data);
-        setEventsClone(data);
+        dispatch({
+          type: "UPDATE_HOME_PAGE_EVENTS",
+          payload: { events: data, eventsClone: data },
+        });
       }
     });
   };
