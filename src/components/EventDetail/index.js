@@ -20,14 +20,17 @@ function EventDetail() {
   } = locationState;
   const { ticketCart = [] } = state;
   const [activeImage, setActiveImage] = useState(images[0]);
-  const [ticketQuantity, setTicketQuantity] = useState(0);
 
   const isTicketInCart = useMemo(
     () => ticketCart.find((tc) => tc.ticket._id === _id),
     [ticketCart, _id]
   );
 
-  const handleTicketQuantity = (e) => {
+  const [ticketQuantity, setTicketQuantity] = useState(
+    isTicketInCart?.ticketQuantity || 0
+  );
+
+  const handleUpdateTicketByValue = (e) => {
     e.preventDefault();
     const value = e.target.value;
     if (value === "") {
@@ -37,7 +40,7 @@ function EventDetail() {
     }
   };
 
-  const handleAddTicket = (value) => {
+  const handleAddTicketToCart = (value) => {
     dispatch({
       type: "ADD_TICKET_TO_CART",
       payload: { ticket: locationState, ticketQuantity: value },
@@ -47,7 +50,7 @@ function EventDetail() {
   const handleSetTicketQuantity = (value) => {
     setTicketQuantity(value);
     if (isTicketInCart) {
-      handleAddTicket(value);
+      handleAddTicketToCart(value);
     }
   };
 
@@ -104,8 +107,7 @@ function EventDetail() {
                   <input
                     value={ticketQuantity}
                     className="input-quantity"
-                    onChange={(e) => handleTicketQuantity(e)}
-                    placeholder={0}
+                    onChange={(e) => handleUpdateTicketByValue(e)}
                   />
                   <div
                     className="btn-quantity"
@@ -126,7 +128,7 @@ function EventDetail() {
                 <button
                   className="btn-get-ticket"
                   onClick={() =>
-                    ticketQuantity > 0 && handleAddTicket(ticketQuantity)
+                    ticketQuantity > 0 && handleAddTicketToCart(ticketQuantity)
                   }
                 >
                   Add Ticket To Cart
