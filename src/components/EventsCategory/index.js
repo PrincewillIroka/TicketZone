@@ -36,7 +36,7 @@ function EventsCategory() {
           Events {categoryName && `/ ${categoryName}`}
         </h3>
         {isLoading ? (
-          <div className="">Loading...</div>
+          <div className="explore-item-none-2">Loading...</div>
         ) : !events.length ? (
           <div className="explore-item-none-2">
             No event found in this category.

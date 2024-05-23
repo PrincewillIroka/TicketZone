@@ -1,4 +1,5 @@
 import userReducer from "./userReducer";
+import eventsReducer from "./eventsReducer";
 
 const reduceReducers =
   (...reducers) =>
@@ -8,4 +9,4 @@ const reduceReducers =
       prevState
     );
 
-export default reduceReducers(userReducer);
+export default reduceReducers(userReducer, eventsReducer);
