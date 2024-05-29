@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
-import { IoMdClose } from "react-icons/io";
+import { IoMdClose, IoMdSearch } from "react-icons/io";
 import { useStateValue } from "store/stateProvider";
 import "./Header.css";
 
@@ -41,19 +41,30 @@ function Header() {
             <img src="/logo.png" className="img-logo" alt="Logo" />
           </Link>
         </li>
-        {/* <li className={`${getActiveTab("") && "nav-links-active"}`}>
-          <a href="/">Home</a>
-        </li> */}
-        <li className={`${getActiveTab("explore") && "nav-links-active"}`}>
+        <li
+          className={`nav-link ${getActiveTab("explore") && "nav-link-active"}`}
+        >
           <Link to="/explore">Explore</Link>
         </li>
-        <li className={`${getActiveTab("buy-a-ticket") && "nav-links-active"}`}>
+        <li
+          className={`nav-link ${
+            getActiveTab("buy-a-ticket") && "nav-link-active"
+          }`}
+        >
           <Link to="/buy-a-ticket">Buy A Ticket</Link>
         </li>
-        <li className={`${getActiveTab("sell-tickets") && "nav-links-active"}`}>
+        <li
+          className={`nav-link ${
+            getActiveTab("sell-tickets") && "nav-link-active"
+          }`}
+        >
           <Link to="/sell-tickets">Sell Tickets</Link>
         </li>
-        <li className={`${getActiveTab("how-it-works") && "nav-links-active"}`}>
+        <li
+          className={`nav-link ${
+            getActiveTab("how-it-works") && "nav-link-active"
+          }`}
+        >
           <Link to="/how-it-works">How It Works</Link>
         </li>
       </ul>
@@ -70,10 +81,13 @@ function Header() {
           />
           {eventSearchValue && (
             <IoMdClose
-              className="search-close-btn"
+              className="close-search-icon"
               onClick={() => setEventSearchValue("")}
             />
           )}
+        </li>
+        <li>
+          <IoMdSearch className="search-icon" />
         </li>
         <li>
           {!isUserLoggedIn ? (
@@ -107,7 +121,7 @@ function Header() {
             <div className="cart-header">
               <h3 className="cart-heading">Cart</h3>
               <IoMdClose
-                className="cart-close-btn"
+                className="close-cart-icon"
                 onClick={() => setIsCartOpen(false)}
               />
             </div>
