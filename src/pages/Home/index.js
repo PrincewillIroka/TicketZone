@@ -16,7 +16,7 @@ import { useStateValue } from "store/stateProvider";
 import "./Home.css";
 import Header from "../Header";
 import Footer from "../Footer";
-import EventCard from "./EventCard";
+import EventCard from "components/EventCard";
 
 const defaultTag = { name: "All", label: "all" };
 

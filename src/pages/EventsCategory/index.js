@@ -4,7 +4,7 @@ import Header from "../Header";
 import Footer from "../Footer";
 import "./EventsCategory.css";
 import { getEventsCategory } from "services/eventServices";
-import EventCard from "components/Home/EventCard";
+import EventCard from "components/EventCard";
 
 function EventsCategory() {
   const location = useLocation();

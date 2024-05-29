@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "components/Home";
-import Auth from "components/Auth";
-import EventsCategory from "components/EventsCategory";
-import Dashboard from "components/Dashboard";
-import HowItWorks from "components/HowItWorks";
-import BuyATicket from "components/BuyATicket";
-import SellTickets from "components/SellTickets";
-import Explore from "components/Explore";
-import EventDetail from "components/EventDetail";
+import Home from "pages/Home";
+import Auth from "pages/Auth";
+import EventsCategory from "pages/EventsCategory";
+import Dashboard from "pages/Dashboard";
+import HowItWorks from "pages/HowItWorks";
+import BuyATicket from "pages/BuyATicket";
+import SellTickets from "pages/SellTickets";
+import Explore from "pages/Explore";
+import EventDetail from "pages/EventDetail";
 
 import { StateProvider } from "store/stateProvider";
 import initialState from "store/state";
