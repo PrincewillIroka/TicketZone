@@ -12,6 +12,7 @@ function Header() {
   const location = useLocation();
   const { isUserLoggedIn, ticketCart = [] } = state;
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [eventSearchValue, setEventSearchValue] = useState("");
 
   const handleNavigate = (page) => {
     navigate(page);
@@ -21,6 +22,15 @@ function Header() {
     const str = location.pathname.split("/")[1];
     const isActiveTab = str.includes(value.toLowerCase());
     return isActiveTab;
+  };
+
+  const handleSearchEvents = (e) => {
+    e.preventDefault();
+    setEventSearchValue(e.target.value);
+  };
+
+  const handleSubmitSearch = () => {
+    handleNavigate(`/explore-event?search=${eventSearchValue}`);
   };
 
   return (
@@ -49,7 +59,21 @@ function Header() {
       </ul>
       <ul className="nav-controls">
         <li className="search-input-container">
-          <input placeholder="Search for events" className="search-input" />
+          <input
+            placeholder="Search for events"
+            className="search-input"
+            onChange={(e) => handleSearchEvents(e)}
+            onKeyDown={(e) => {
+              e.key === "Enter" && handleSubmitSearch();
+            }}
+            value={eventSearchValue}
+          />
+          {eventSearchValue && (
+            <IoMdClose
+              className="search-close-btn"
+              onClick={() => setEventSearchValue("")}
+            />
+          )}
         </li>
         <li>
           {!isUserLoggedIn ? (

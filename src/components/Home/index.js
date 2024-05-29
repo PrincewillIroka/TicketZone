@@ -50,7 +50,7 @@ function Home() {
   }, [dispatch]);
 
   const handleGetEvents = useCallback(() => {
-    getEvents().then((response) => {
+    getEvents({ searchParam: "" }).then((response) => {
       const { success, data } = response || {};
       if (success) {
         dispatch({
@@ -161,7 +161,7 @@ function Home() {
                 ></div>
               ))
             ) : !events.length ? (
-              <div className="explore-item-none">No event found here.</div>
+              <div className="explore-item-none">No event found.</div>
             ) : (
               events.map((event, index) => (
                 <EventCard event={event} key={index} />

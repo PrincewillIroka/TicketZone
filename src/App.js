@@ -27,7 +27,8 @@ function App() {
           <Route path="/sell-tickets" element={<SellTickets />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/explore-category/:page" element={<EventsCategory />} />
-          <Route path="/explore-event/:page" element={<EventDetail />} />
+          <Route path="/event-details/:page" element={<EventDetail />} />
+          <Route path="/explore-event" element={<Explore />} />
         </Routes>
       </Router>
     </StateProvider>
