@@ -9,8 +9,9 @@
 }
 
 .event-detail-breadcrumb {
-  font-size: 15px;
-  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
 .event-detail-row {
@@ -59,9 +60,9 @@
 }
 
 .event-detail-title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 7px;
+  margin-bottom: 10px;
 }
 
 .event-detail-venue-container {

@@ -60,7 +60,7 @@ function EventDetail() {
       <div className="event-detail-container">
         <section className="event-detail-section">
           <div className="event-detail-breadcrumb">
-            <span>{category.name}</span>/<span>Football</span>
+            Category {category.name && `/ ${category.name}`}
           </div>
           <div className="event-detail-row">
             <div className="event-detail-img-container">

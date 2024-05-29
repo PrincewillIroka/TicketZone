@@ -33,7 +33,7 @@ function EventsCategory() {
       <Header />
       <div className="events-category-container">
         <h3 className="events-category-heading">
-          Events {categoryName && `/ ${categoryName}`}
+          {categoryName && `${categoryName}`}
         </h3>
         {isLoading ? (
           <div className="explore-item-none-2">Loading...</div>
