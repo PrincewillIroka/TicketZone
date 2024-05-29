@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useLocation } from "react-router-dom";
-import Header from "../Header";
-import Footer from "../Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import "./EventsCategory.css";
 import { getEventsCategory } from "services/eventServices";
 import EventCard from "components/EventCard";

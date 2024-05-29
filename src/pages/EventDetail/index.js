@@ -2,8 +2,8 @@ import { React, useState, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import { useStateValue } from "store/stateProvider";
-import Header from "../Header";
-import Footer from "../Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import "./EventDetail.css";
 
 function EventDetail() {
