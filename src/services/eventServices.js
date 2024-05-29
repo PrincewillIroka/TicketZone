@@ -5,7 +5,7 @@ const getCategories = () => {
     const url = `${APP_BACKEND}/api/categories`;
 
     fetch(url, {
-      method: "GET",
+      method: "POST",
     })
       .then((response) => response.json())
       .then((response) => resolve(response))
