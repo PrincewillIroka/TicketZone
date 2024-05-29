@@ -3,11 +3,12 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
 import { IoMdClose, IoMdSearch } from "react-icons/io";
+import { MdDeleteOutline } from "react-icons/md";
 import { useStateValue } from "store/stateProvider";
 import "./Header.css";
 
 function Header() {
-  const { state } = useStateValue();
+  const { state, dispatch } = useStateValue();
   const navigate = useNavigate();
   const location = useLocation();
   const { isUserLoggedIn, ticketCart = [] } = state;
@@ -32,6 +33,31 @@ function Header() {
   const handleSubmitSearch = () => {
     handleNavigate(`/explore-event?search=${eventSearchValue}`);
   };
+
+  const handleRemoveTicket = (ticket) => {
+    dispatch({
+      type: "ADD_TICKET_TO_CART",
+      payload: { ticket, ticketQuantity: 0 },
+    });
+  };
+
+  const calculateTotalAmount = () => {
+    const totalAmount = ticketCart.reduce(
+      (acc, { ticket = {}, ticketQuantity = 0 }) => {
+        const price = ticket.price !== "free" ? ticket.price : 0;
+        let value = Number(price) * ticketQuantity;
+        value = acc + value;
+        return value;
+      },
+      0
+    );
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "NGN",
+    }).format(totalAmount);
+  };
+
+  const handleCheckout = () => {};
 
   return (
     <header>
@@ -131,20 +157,34 @@ function Header() {
                 return (
                   <div key={index} className="cart-ticket">
                     <span>{ticket.title}</span>
-                    <span>{ticketQuantity}</span>
+                    <div className="cart-ticket-right">
+                      <span>{ticketQuantity}</span>
+                      <MdDeleteOutline
+                        className="cart-ticket-remove-icon"
+                        onClick={() => handleRemoveTicket(ticket)}
+                      />
+                    </div>
                   </div>
                 );
               })}
             </div>
             <div className="cart-footer">
               <div className="cart-items-summary">
-                <span>Items</span>
-                <span>0.00</span>
+                <span className="cart-items-summary-tag">Items</span>
+                <span>{ticketCart.length}</span>
               </div>
               <div className="cart-items-summary">
-                <span>Total</span>
-                <span>0.00</span>
+                <span className="cart-items-summary-tag">Total Amount</span>
+                <span>{calculateTotalAmount()}</span>
               </div>
+              <button
+                className={`btn-cart-checkout ${
+                  !ticketCart.length && "btn-cart-checkout-disabled"
+                }`}
+                onClick={() => handleCheckout()}
+              >
+                Checkout
+              </button>
             </div>
           </div>
         </div>
