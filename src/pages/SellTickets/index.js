@@ -23,7 +23,7 @@ function SellTickets() {
   const [currency, setCurrency] = useState("Currency");
   const [isLoading, setIsLoading] = useState(false);
   const [date, setDate] = useState(new Date());
-  const [isSuccessful, setIsSuccessful] = useState(true);
+  const [isSuccessful, setIsSuccessful] = useState(false);
 
   const handleSelect = (e, field) => {
     e.preventDefault();
