@@ -7,7 +7,7 @@ function BuyATicket(props) {
   return (
     <div>
       <Header />
-      <div className="layout-container">
+      <div className="buy-a-ticket-container">
         <section className="buy-a-ticket-section"></section>
       </div>
       <Footer />
