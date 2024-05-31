@@ -1,11 +1,10 @@
 .sell-tickets-container {
-  padding: 10% 10% 5%;
+  padding: 10% 10% 7%;
 }
 
 .sell-tickets-section {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
   height: 60vh;
 }
 
@@ -15,6 +14,9 @@
   flex-direction: column;
 }
 
+.sell-tickets-col-heading {
+}
+
 .sell-tickets-input {
   height: 35px;
   margin-bottom: 25px;
@@ -22,36 +24,170 @@
   padding: 0 5px;
 }
 
-.sell-tickets-select {
+.sell-tickets-category {
   height: 35px;
   font-size: 16px;
-  margin-bottom: 25px;
+  /* width: 30%; */
+}
+
+.sell-tickets-date-picker {
 }
 
 .sell-tickets-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 60px;
+  margin-bottom: 25px;
+  display: grid;
+  grid-template-columns: repeat(3, 28%);
+  column-gap: 8%;
+}
+
+input[type="date"] {
+  font-size: 16px;
 }
 
 .sell-tickets-quantity {
-  height: 35px;
+  height: 30px;
   font-size: 16px;
-  width: 25%;
+}
+
+.sell-tickets-type {
+  font-size: 16px;
 }
 
 .sell-tickets-price {
   font-size: 16px;
-  width: 25%;
+  height: 30px;
 }
 
-.sell-tickets-preview-wrapper {
-  /* border: 1px solid #ccc;
-  width: 50%; */
+.sell-tickets-currency {
+  font-size: 16px;
 }
 
 .sell-tickets-preview {
-  margin-bottom: 20px;
+  background-color: #dddddd;
+  font-family: "Inknut Antiqua", serif;
+  font-family: "Ravi Prakash", cursive;
+  font-family: "Lora", serif;
+  font-family: "Indie Flower", cursive;
+  font-family: "Cabin", sans-serif;
+}
+
+.item {
+  width: 100%;
+  padding: 0 20px;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.item-right {
+  padding: 79px 50px;
+  margin-right: 20px;
+  width: 25%;
+  position: relative;
+  height: 120px;
+}
+
+.item-price {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.item-amount {
+  margin-right: 5px;
+  font-size: 22px;
+}
+
+.item-currency {
+  font-size: 12px;
+}
+
+.up-border,
+.down-border {
+  padding: 14px 15px;
+  background-color: #ddd;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.up-border {
+  top: -8px;
+  right: -35px;
+}
+
+.down-border {
+  bottom: -95px;
+  right: -35px;
+}
+
+.num {
+  font-size: 60px;
+  text-align: center;
+  color: #111;
+}
+
+.item-right .day,
+.item-left .event {
+  color: #555;
+  font-size: 20px;
+  margin-bottom: 9px;
+}
+
+.item-right .day {
+  text-align: center;
+  font-size: 25px;
+}
+
+.item-left {
+  width: 71%;
+  padding: 34px 0px 19px 46px;
+  border-left: 3px dotted #999;
+}
+
+.item-left .title {
+  color: #111;
+  font-size: 34px;
+  margin-bottom: 12px;
+}
+
+.sce,
+.loc {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.item .tickets,
+.booked,
+.cancel {
+  color: #fff;
+  padding: 6px 14px;
+  float: right;
+  margin-top: 10px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+.item .tickets {
+  background: #000;
+}
+
+.item .booked {
+  background: #3d71e9;
+}
+
+.item .cancel {
+  background: #df5454;
+}
+
+.linethrough {
+  text-decoration: line-through;
 }
 
 .btn-sell-ticket {
@@ -65,8 +201,61 @@
   font-weight: 600;
   text-transform: uppercase;
   cursor: pointer;
+  margin-top: 35px;
 }
 
 .btn-sell-ticket:hover {
   opacity: 0.9;
+}
+
+.btn-sell-ticket-loading {
+  cursor: not-allowed;
+  background-color: rgba(246, 18, 83, 0.9);
+}
+
+.alert-wrapper {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.sell-tickets-alert-badge {
+  margin-left: 10px;
+}
+
+.sell-tickets-alert-success {
+  position: absolute;
+  animation-name: slideInFromLeft;
+  animation-duration: 0.8s;
+  animation-delay: 0.4s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  display: flex;
+  right: 0;
+  color: #fff;
+  background-color: rgb(9, 111, 9);
+  border-radius: 3px;
+  padding: 10px 10px;
+  align-items: center;
+  font-weight: 500;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    top: -100px;
+  }
+  to {
+    top: 0;
+  }
+}
+
+.sell-tickets-alert-displayed {
+  visibility: visible;
+}
+
+.sell-tickets-alert-hidden {
+  visibility: hidden;
+  top: -100px;
 }
