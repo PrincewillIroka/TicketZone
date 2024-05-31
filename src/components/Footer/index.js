@@ -32,13 +32,8 @@ function Footer() {
               </Link>
             </li>
             <li>
-              <Link to="/faq" className="footer-social-icon-container">
-                FAQ
-              </Link>
-            </li>
-            <li>
-              <Link to="/blog" className="footer-social-icon-container">
-                Blog
+              <Link to="/faqs" className="footer-social-icon-container">
+                FAQs
               </Link>
             </li>
           </ul>

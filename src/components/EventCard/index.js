@@ -10,7 +10,7 @@ function EventCard({ event }) {
   };
 
   const getEventAlias = (title) => {
-    const str = `/explore-event/${title}`.toLowerCase().replace(/ /g, "-");
+    const str = `/event-details/${title}`.toLowerCase().replace(/ /g, "-");
     return str;
   };
 

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useLocation } from "react-router-dom";
-import Header from "../Header";
-import Footer from "../Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import "./EventsCategory.css";
 import { getEventsCategory } from "services/eventServices";
-import EventCard from "components/Home/EventCard";
+import EventCard from "components/EventCard";
 
 function EventsCategory() {
   const location = useLocation();
@@ -33,7 +33,7 @@ function EventsCategory() {
       <Header />
       <div className="events-category-container">
         <h3 className="events-category-heading">
-          Events {categoryName && `/ ${categoryName}`}
+          {categoryName && `${categoryName}`}
         </h3>
         {isLoading ? (
           <div className="explore-item-none-2">Loading...</div>

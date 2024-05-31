@@ -52,7 +52,7 @@ function Auth() {
   const handleSignUp = async () => {
     setIsLoading(true);
     await userSignUp({ email, password }).then((response) => {
-      const { success, data: user } = response;
+      const { success } = response;
       setIsLoading(false);
       if (success) {
         navigate("/login", { replace: true });
@@ -96,7 +96,11 @@ function Auth() {
               getActiveTab("login") ? handleLogin() : handleSignUp();
             }}
           >
-            {getActiveTab("login") ? "Login" : "Sign Up"}
+            {isLoading
+              ? "Loading..."
+              : getActiveTab("login")
+              ? "Login"
+              : "Sign Up"}
           </button>
         </form>
         <p>

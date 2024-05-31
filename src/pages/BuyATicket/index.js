@@ -1,13 +1,13 @@
 import React from "react";
-import Header from "../Header";
-import Footer from "../Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import "./BuyATicket.css";
 
 function BuyATicket(props) {
   return (
     <div>
       <Header />
-      <div className="layout-container">
+      <div className="buy-a-ticket-container">
         <section className="buy-a-ticket-section"></section>
       </div>
       <Footer />

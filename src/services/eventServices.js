@@ -5,7 +5,7 @@ const getCategories = () => {
     const url = `${APP_BACKEND}/api/categories`;
 
     fetch(url, {
-      method: "GET",
+      method: "POST",
     })
       .then((response) => response.json())
       .then((response) => resolve(response))
@@ -16,12 +16,17 @@ const getCategories = () => {
   });
 };
 
-const getEvents = () => {
+const getEvents = (payload) => {
   return new Promise((resolve, reject) => {
     const url = `${APP_BACKEND}/api/events`;
 
     fetch(url, {
-      method: "GET",
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
     })
       .then((response) => response.json())
       .then((response) => resolve(response))
@@ -53,4 +58,25 @@ const getEventsCategory = (payload) => {
   });
 };
 
-export { getCategories, getEvents, getEventsCategory };
+const createEvent = (payload) => {
+  return new Promise((resolve, reject) => {
+    const url = `${APP_BACKEND}/api/createEvent`;
+
+    fetch(url, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => response.json())
+      .then((response) => resolve(response))
+      .catch((error) => {
+        console.error(error);
+        return reject(error);
+      });
+  });
+};
+
+export { getCategories, getEvents, getEventsCategory, createEvent };

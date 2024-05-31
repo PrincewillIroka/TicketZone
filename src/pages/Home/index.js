@@ -14,9 +14,9 @@ import { getCategories, getEvents } from "services/eventServices";
 import { createArrayItems } from "utils";
 import { useStateValue } from "store/stateProvider";
 import "./Home.css";
-import Header from "../Header";
-import Footer from "../Footer";
-import EventCard from "./EventCard";
+import Header from "components/Header";
+import Footer from "components/Footer";
+import EventCard from "components/EventCard";
 
 const defaultTag = { name: "All", label: "all" };
 
@@ -39,6 +39,7 @@ function Home() {
   const handleGetCategories = useCallback(() => {
     getCategories().then((response) => {
       const { success, categories = [], tags = [] } = response || {};
+      console.log({ categories });
       if (success) {
         dispatch({
           type: "UPDATE_HOME_PAGE_CATEGORIES",
@@ -50,7 +51,7 @@ function Home() {
   }, [dispatch]);
 
   const handleGetEvents = useCallback(() => {
-    getEvents().then((response) => {
+    getEvents({ searchParam: "" }).then((response) => {
       const { success, data } = response || {};
       if (success) {
         dispatch({
@@ -161,7 +162,7 @@ function Home() {
                 ></div>
               ))
             ) : !events.length ? (
-              <div className="explore-item-none">No event found here.</div>
+              <div className="explore-item-none">No event found.</div>
             ) : (
               events.map((event, index) => (
                 <EventCard event={event} key={index} />

@@ -1,0 +1,13 @@
+.explore-item-none-2 {
+  height: 60vh;
+}
+
+.explore-heading-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.explore-heading {
+  margin-right: 10px;
+}

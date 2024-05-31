@@ -2,8 +2,8 @@ import { React, useState, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import { useStateValue } from "store/stateProvider";
-import Header from "../Header";
-import Footer from "../Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import "./EventDetail.css";
 
 function EventDetail() {
@@ -60,7 +60,7 @@ function EventDetail() {
       <div className="event-detail-container">
         <section className="event-detail-section">
           <div className="event-detail-breadcrumb">
-            <span>{category.name}</span>/<span>Football</span>
+            Category {category.name && `/ ${category.name}`}
           </div>
           <div className="event-detail-row">
             <div className="event-detail-img-container">
