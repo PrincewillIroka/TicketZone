@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useCallback, memo } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { AiOutlineArrowRight } from "react-icons/ai";
+import { AiOutlineArrowRight, AiOutlineSafety } from "react-icons/ai";
 import { BsFileMusic } from "react-icons/bs";
 import {
   MdOutlineSportsSoccer,
   MdTheaterComedy,
   MdOutlineFestival,
+  MdFindInPage,
 } from "react-icons/md";
-import { FaArtstation, FaBible } from "react-icons/fa";
+import { FaArtstation, FaBible, FaMoneyCheckAlt } from "react-icons/fa";
 import { GrTechnology } from "react-icons/gr";
 import CurveSvg from "assets/Curve.svg";
 import { getCategories, getEvents } from "services/eventServices";
@@ -182,25 +183,41 @@ function Home() {
           <img src={CurveSvg} className="explore-curve-1" alt="CurveSvg" />
         </div>
         <section className="features-section">
-          <div className="feature-single">Buy and Sell Tickets</div>
-          <div className="feature-single">100% Guarantee, Safe & Secure</div>
-          <div className="feature-single">Full service Customer care</div>
+          <div className="feature-single">
+            <MdFindInPage className="feature-single-icon" />
+            <span className="feature-single-text">Find events around you</span>
+          </div>
+          <div className="feature-single">
+            <FaMoneyCheckAlt className="feature-single-icon" />
+            <span className="feature-single-text">Buy and Sell Tickets</span>
+          </div>
+          <div className="feature-single">
+            <AiOutlineSafety className="feature-single-icon" />
+            <span className="feature-single-text">
+              100% Guarantee, Safe & Secure
+            </span>
+          </div>
         </section>
         <div className="explore-curve-bg-2">
           <img src={CurveSvg} className="explore-curve-2" alt="CurveSvg" />
         </div>
         <section className="mailinglist-section">
-          <div>
+          <div className="mailinglist-col-1">
             <h3 className="mailinglist-heading">Stay in the know</h3>
             <p className="mailinglist-info">
-              Join our email list and be the first to know about exclusive
-              offers, the best in live events, and more.
+              Join our email list and be the first to know about the newest
+              events around you, exclusive offers, and more.
             </p>
           </div>
-          <form className="mailinglist-form">
-            <input placeholder="Email Address" className="mailinglist-input" />
-            <button className="mailinglist-btn">Send</button>
-          </form>
+          <div className="mailinglist-col-2">
+            <form className="mailinglist-form">
+              <input
+                placeholder="Email Address"
+                className="mailinglist-input"
+              />
+              <button className="mailinglist-btn">Send</button>
+            </form>
+          </div>
         </section>
       </div>
       <Footer />
