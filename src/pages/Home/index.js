@@ -173,13 +173,16 @@ function Home() {
             <button className="btn-explore-show-more">Show more</button>
           </div>
         </section>
+        <div className="explore-curve-bg-1">
+          <img src={CurveSvg} className="explore-curve-1" alt="CurveSvg" />
+        </div>
         <section className="features-section">
           <div className="feature-single">Buy and Sell Tickets</div>
           <div className="feature-single">100% Guarantee, Safe & Secure</div>
           <div className="feature-single">Full service Customer care</div>
         </section>
-        <div className="explore-curve-bg">
-          <img src={CurveSvg} className="explore-curve" alt="CurveSvg" />
+        <div className="explore-curve-bg-2">
+          <img src={CurveSvg} className="explore-curve-2" alt="CurveSvg" />
         </div>
         <section className="mailinglist-section">
           <div>
