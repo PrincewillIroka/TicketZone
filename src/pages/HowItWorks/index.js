@@ -7,7 +7,7 @@ function HowItWorks(props) {
   return (
     <div>
       <Header />
-      <div className="layout-container">
+      <div className="how-it-works-container">
         <section className="how-it-works-section"></section>
       </div>
       <Footer />

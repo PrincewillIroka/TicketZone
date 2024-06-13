@@ -25,6 +25,7 @@ footer {
   width: 80px;
   object-fit: cover;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .footer-app-description {
@@ -59,4 +60,14 @@ footer {
 
 .footer-social-icon {
   margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+  .footer-row-1-col-1 {
+    width: 50%;
+  }
+
+  .footer-col {
+    width: 30%;
+  }
 }
