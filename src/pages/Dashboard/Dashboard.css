@@ -1,0 +1,60 @@
+.dashboard-container {
+  padding: 90px 0 0;
+}
+
+.dashboard-section {
+  height: 88.25vh;
+  display: flex;
+}
+
+.dashboard-aside {
+  width: 18%;
+  background-color: #1e2126;
+  height: 100%;
+  padding: 70px 0 15px;
+}
+
+.dashboard-tab {
+  height: 60px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.dashboard-tab-active {
+  background-color: #fff;
+  border-right: 1px solid #1e2126;
+}
+
+.dashboard-tab-inactive {
+  color: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.dashboard-tab-inactive:nth-child(1) {
+  border-top: 1px solid #fff;
+}
+
+.dashboard-main {
+  width: 88%;
+  padding: 20px 15px;
+  height: 100%;
+}
+
+.btn-create-ticket {
+  font-size: 16px;
+  background-color: #f61253;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.dashboard-main-tickets {
+  /* height: 90%;
+  width: 100%;
+  border: 1px solid red; */
+}
