@@ -8,7 +8,9 @@ function Footer() {
     <footer>
       <div className="footer-row-1">
         <div className="footer-row-1-col-1">
-          <img src="/logo.png" className="footer-logo" alt="Logo" />
+          <Link to="/">
+            <img src="/logo.png" className="footer-logo" alt="Logo" />
+          </Link>
           <span className="footer-app-description">
             Ticket Zone is an event ticketing platform for memorable
             experiences.
