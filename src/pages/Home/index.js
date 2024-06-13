@@ -170,7 +170,12 @@ function Home() {
             )}
           </div>
           <div className="explore-more">
-            <button className="btn-explore-show-more">Show more</button>
+            <button
+              onClick={() => handleNavigate("/explore")}
+              className="btn-explore-show-more"
+            >
+              Show more
+            </button>
           </div>
         </section>
         <div className="explore-curve-bg-1">
