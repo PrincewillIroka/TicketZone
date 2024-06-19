@@ -14,3 +14,5 @@ export const MONTHS_OF_THE_YEAR = [
   "November",
   "December",
 ];
+
+export const DEFAULT_EVENT_TAGS = { name: "All", label: "all" };
