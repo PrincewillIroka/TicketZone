@@ -7,6 +7,13 @@ const userReducer = (state, action) => {
         isUserLoggedIn: true,
       };
     }
+    case "USER_LOG_OUT": {
+      return {
+        ...state,
+        user: {},
+        isUserLoggedIn: false,
+      };
+    }
     case "ADD_TICKET_TO_CART": {
       let { ticketCart = [] } = state;
       const newItem = action.payload;

@@ -12,6 +12,7 @@
   background-color: #1e2126;
   height: 100%;
   padding: 70px 0 15px;
+  position: relative;
 }
 
 .dashboard-tab {
@@ -36,6 +37,25 @@
 
 .dashboard-tab-inactive:nth-child(1) {
   border-top: 1px solid #fff;
+}
+
+.btn-logout {
+  position: fixed;
+  bottom: 2px;
+  background-color: #f61253;
+  color: #ffffff;
+  left: 5%;
+  padding: 5px 10px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon-logout {
+  height: 15px;
+  width: 15px;
+  margin-left: 10px;
 }
 
 .dashboard-main {
