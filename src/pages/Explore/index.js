@@ -32,7 +32,7 @@ function Explore() {
         setIsLoadingEvents(false);
       }
     });
-  }, [searchParam]);
+  }, [dispatch, searchParam]);
 
   const handleGetCategories = useCallback(() => {
     getCategories().then((response) => {

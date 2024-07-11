@@ -1,14 +1,26 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { IoMdLogOut } from "react-icons/io";
 import Header from "components/Header";
+import { useStateValue } from "store/stateProvider";
 import "./Dashboard.css";
 
 function Dashboard(props) {
   const [activeTab, setActiveTab] = useState("Tickets");
   const navigate = useNavigate();
+  const { dispatch } = useStateValue();
 
   const handleNavigate = (page) => {
     navigate(page);
+  };
+
+  const handleLogOut = () => {
+    localStorage.removeItem("isUserLoggedIn");
+    localStorage.removeItem("user");
+    dispatch({
+      type: "USER_LOG_OUT",
+    });
+    navigate("/", { replace: true });
   };
 
   return (
@@ -47,6 +59,10 @@ function Dashboard(props) {
             >
               Purchases
             </div>
+            <button className="btn-logout" onClick={() => handleLogOut()}>
+              <span>Log Out</span>
+              <IoMdLogOut className="icon-logout" />
+            </button>
           </aside>
           <div className="dashboard-main">
             <button
