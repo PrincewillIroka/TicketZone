@@ -4,6 +4,7 @@ import { FaCircleUser } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
 import { IoMdClose, IoMdSearch } from "react-icons/io";
 import { MdDeleteOutline } from "react-icons/md";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { useStateValue } from "store/stateProvider";
 import "./Header.css";
 
@@ -94,6 +95,9 @@ function Header() {
           <Link to="/how-it-works">How It Works</Link>
         </li>
       </ul>
+      <div className="nav-hamburger-wrapper">
+        <GiHamburgerMenu className="hamburger-wrapper" />
+      </div>
       <ul className="nav-controls">
         <li className="search-input-container">
           <input
