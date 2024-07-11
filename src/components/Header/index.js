@@ -137,6 +137,7 @@ function Header() {
               <div
                 className="cart-icon-wrapper"
                 onClick={() => setIsCartOpen(true)}
+                title="Cart"
               >
                 <FiShoppingCart className="cart-icon" />
                 <span className="cart-count">{ticketCart.length}</span>
