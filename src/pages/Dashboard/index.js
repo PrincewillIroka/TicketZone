@@ -8,6 +8,7 @@ import ImagePlaceholder from "assets/No-Image-Placeholder.png";
 import "./Dashboard.css";
 import ViewTicket from "pages/Dashboard/Modals/ViewTicket";
 import EditTicket from "pages/Dashboard/Modals/EditTicket";
+import { createArrayItems } from "utils";
 
 function Dashboard(props) {
   const [activeTab, setActiveTab] = useState("Tickets");
@@ -20,9 +21,10 @@ function Dashboard(props) {
   const { _id = "" } = user;
   const [selectedTicket, setSelectedTicket] = useState({});
   const [ticketAction, setTicketAction] = useState("");
+  const [isLoadingEvents, setIsLoadingEvents] = useState(true);
 
-  const handleGetUserEvents = useCallback(() => {
-    getUserEvents({
+  const handleGetUserEvents = useCallback(async () => {
+    await getUserEvents({
       userId: _id,
       page,
       limit,
@@ -31,6 +33,7 @@ function Dashboard(props) {
       if (success) {
         setTickets(data);
       }
+      setIsLoadingEvents(false);
     });
   }, [_id, page, limit]);
 
@@ -109,62 +112,80 @@ function Dashboard(props) {
             Create New Ticket
           </button>
           <div className="dashboard-main-wrapper">
-            {activeTab === "Tickets" && (
-              <div className="dashboard-main-tickets">
-                {tickets.map((ticket, index) => {
-                  const { title, description, venue, price, images, currency } =
-                    ticket;
-                  const imgSrc =
-                    images && images.length ? images[0] : ImagePlaceholder;
-                  return (
-                    <div key={index} className="dashboard-main-single-ticket">
-                      <div className="single-ticket-img-wrapper">
-                        <img
-                          src={imgSrc}
-                          className="single-ticket-img"
-                          alt="Ticket Placeholder"
-                        />
-                      </div>
-                      <div className="single-ticket-row">
-                        <span className="single-ticket-tag">Title: </span>
-                        <span className="">{title}</span>
-                      </div>
-                      {/* <div className="single-ticket-col">
+            {activeTab === "Tickets" &&
+              (isLoadingEvents ? (
+                <div className="dashboard-main-tickets">
+                  {createArrayItems(6).map((item, index) => (
+                    <div
+                      className="dashboard-main-single-shimmer shimmer-bg"
+                      key={index}
+                    ></div>
+                  ))}
+                </div>
+              ) : !tickets.length ? (
+                <div className="explore-item-none">No tickets found.</div>
+              ) : (
+                <div className="dashboard-main-tickets">
+                  {tickets.map((ticket, index) => {
+                    const {
+                      title,
+                      description,
+                      venue,
+                      price,
+                      images,
+                      currency,
+                    } = ticket;
+                    const imgSrc =
+                      images && images.length ? images[0] : ImagePlaceholder;
+                    return (
+                      <div key={index} className="dashboard-main-single-ticket">
+                        <div className="single-ticket-img-wrapper">
+                          <img
+                            src={imgSrc}
+                            className="single-ticket-img"
+                            alt="Ticket Placeholder"
+                          />
+                        </div>
+                        <div className="single-ticket-row">
+                          <span className="single-ticket-tag">Title: </span>
+                          <span className="">{title}</span>
+                        </div>
+                        {/* <div className="single-ticket-col">
                           <span className="single-ticket-tag">
                             Description:
                           </span>
                           <span className="">{description}</span>
                         </div> */}
-                      <div className="single-ticket-row">
-                        <span className="single-ticket-tag">Venue:</span>
-                        <span className="">{venue}</span>
-                      </div>
-                      <div className="single-ticket-row">
-                        <span className="single-ticket-tag">Price:</span>
-                        <div className="">
-                          <span>{price} </span>
-                          <span>{currency}</span>
+                        <div className="single-ticket-row">
+                          <span className="single-ticket-tag">Venue:</span>
+                          <span className="">{venue}</span>
+                        </div>
+                        <div className="single-ticket-row">
+                          <span className="single-ticket-tag">Price:</span>
+                          <div className="">
+                            <span>{price} </span>
+                            <span>{currency}</span>
+                          </div>
+                        </div>
+                        <div className="single-ticket-btns-wrapper">
+                          <button
+                            className="single-ticket-btn single-ticket-btn-view"
+                            onClick={() => handleSelectTicket(ticket, "View")}
+                          >
+                            View
+                          </button>
+                          <button
+                            className="single-ticket-btn single-ticket-btn-edit"
+                            onClick={() => handleSelectTicket(ticket, "Edit")}
+                          >
+                            Edit
+                          </button>
                         </div>
                       </div>
-                      <div className="single-ticket-btns-wrapper">
-                        <button
-                          className="single-ticket-btn single-ticket-btn-view"
-                          onClick={() => handleSelectTicket(ticket, "View")}
-                        >
-                          View
-                        </button>
-                        <button
-                          className="single-ticket-btn single-ticket-btn-edit"
-                          onClick={() => handleSelectTicket(ticket, "Edit")}
-                        >
-                          Edit
-                        </button>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
+                    );
+                  })}
+                </div>
+              ))}
           </div>
         </div>
       </section>

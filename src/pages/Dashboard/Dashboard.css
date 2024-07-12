@@ -93,6 +93,10 @@
   row-gap: 3%;
 }
 
+.dashboard-main-single-shimmer {
+  height: 320px;
+}
+
 .dashboard-main-single-ticket {
   /* border: 1px solid #ccc; */
   height: 320px;
