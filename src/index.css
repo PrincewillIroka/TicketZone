@@ -75,3 +75,25 @@ input {
 .explore-item-none {
   height: 320px;
 }
+
+/* Media queries */
+@media (max-width: 1400px) {
+}
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 1080px) {
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 969px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 600px) {
+}

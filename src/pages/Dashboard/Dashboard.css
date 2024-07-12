@@ -82,8 +82,8 @@
 .dashboard-main-wrapper {
   height: calc(100% - 40px);
   width: 100%;
-  /* border: 1px solid #ccc; */
-  padding-top: 15px;
+  padding-top: 20px;
+  overflow-y: auto;
 }
 
 .dashboard-main-tickets {
@@ -93,12 +93,16 @@
   row-gap: 3%;
 }
 
+.dashboard-main-single-shimmer {
+  height: 320px;
+}
+
 .dashboard-main-single-ticket {
   /* border: 1px solid #ccc; */
   height: 320px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 1.5px 4px;
   border-radius: 5px;
-  padding: 10px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
 }
@@ -173,4 +177,31 @@
   border: 1px solid #f61253;
   color: #f61253;
   background-color: #ffffff;
+}
+
+@media (max-width: 1400px) {
+}
+
+@media (max-width: 1200px) {
+  .dashboard-main-tickets {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1080px) {
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 969px) {
+}
+
+@media (max-width: 768px) {
+  .dashboard-main-tickets {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
 }

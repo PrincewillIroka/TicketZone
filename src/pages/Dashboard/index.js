@@ -6,6 +6,9 @@ import { useStateValue } from "store/stateProvider";
 import { getUserEvents } from "services/userServices";
 import ImagePlaceholder from "assets/No-Image-Placeholder.png";
 import "./Dashboard.css";
+import ViewTicket from "pages/Dashboard/Modals/ViewTicket";
+import EditTicket from "pages/Dashboard/Modals/EditTicket";
+import { createArrayItems } from "utils";
 
 function Dashboard(props) {
   const [activeTab, setActiveTab] = useState("Tickets");
@@ -16,18 +19,21 @@ function Dashboard(props) {
   const [limit, setLimit] = useState(10);
   const [tickets, setTickets] = useState([]);
   const { _id = "" } = user;
+  const [selectedTicket, setSelectedTicket] = useState({});
+  const [ticketAction, setTicketAction] = useState("");
+  const [isLoadingEvents, setIsLoadingEvents] = useState(true);
 
-  const handleGetUserEvents = useCallback(() => {
-    getUserEvents({
+  const handleGetUserEvents = useCallback(async () => {
+    await getUserEvents({
       userId: _id,
       page,
       limit,
     }).then((response) => {
       const { success, data } = response || {};
-      console.log({ data });
       if (success) {
         setTickets(data);
       }
+      setIsLoadingEvents(false);
     });
   }, [_id, page, limit]);
 
@@ -46,6 +52,16 @@ function Dashboard(props) {
       type: "USER_LOG_OUT",
     });
     navigate("/", { replace: true });
+  };
+
+  const handleSelectTicket = (ticket, ticketAction) => {
+    setTicketAction(ticketAction);
+    setSelectedTicket(ticket);
+  };
+
+  const handleCloseModal = () => {
+    setTicketAction("");
+    setSelectedTicket({});
   };
 
   return (
@@ -96,13 +112,29 @@ function Dashboard(props) {
             Create New Ticket
           </button>
           <div className="dashboard-main-wrapper">
-            {activeTab === "Tickets" && (
-              <div className="dashboard-main-tickets">
-                {tickets.map(
-                  (
-                    { title, description, venue, price, images, currency },
-                    index
-                  ) => {
+            {activeTab === "Tickets" &&
+              (isLoadingEvents ? (
+                <div className="dashboard-main-tickets">
+                  {createArrayItems(6).map((item, index) => (
+                    <div
+                      className="dashboard-main-single-shimmer shimmer-bg"
+                      key={index}
+                    ></div>
+                  ))}
+                </div>
+              ) : !tickets.length ? (
+                <div className="explore-item-none">No tickets found.</div>
+              ) : (
+                <div className="dashboard-main-tickets">
+                  {tickets.map((ticket, index) => {
+                    const {
+                      title,
+                      description,
+                      venue,
+                      price,
+                      images,
+                      currency,
+                    } = ticket;
                     const imgSrc =
                       images && images.length ? images[0] : ImagePlaceholder;
                     return (
@@ -136,22 +168,39 @@ function Dashboard(props) {
                           </div>
                         </div>
                         <div className="single-ticket-btns-wrapper">
-                          <button className="single-ticket-btn single-ticket-btn-view">
+                          <button
+                            className="single-ticket-btn single-ticket-btn-view"
+                            onClick={() => handleSelectTicket(ticket, "View")}
+                          >
                             View
                           </button>
-                          <button className="single-ticket-btn single-ticket-btn-edit">
+                          <button
+                            className="single-ticket-btn single-ticket-btn-edit"
+                            onClick={() => handleSelectTicket(ticket, "Edit")}
+                          >
                             Edit
                           </button>
                         </div>
                       </div>
                     );
-                  }
-                )}
-              </div>
-            )}
+                  })}
+                </div>
+              ))}
           </div>
         </div>
       </section>
+      {ticketAction === "View" && (
+        <ViewTicket
+          selectedTicket={selectedTicket}
+          handleCloseModal={handleCloseModal}
+        />
+      )}
+      {ticketAction === "Edit" && (
+        <EditTicket
+          selectedTicket={selectedTicket}
+          handleCloseModal={handleCloseModal}
+        />
+      )}
     </div>
   );
 }

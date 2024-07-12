@@ -1,0 +1,41 @@
+.view-ticket-container {
+  margin-top: 30px;
+  overflow-y: auto;
+  font-size: 17px;
+}
+
+.view-ticket-img-wrapper {
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.view-ticket-img {
+  object-fit: contain;
+  height: 100%;
+  width: 80%;
+}
+
+.view-ticket-row {
+  display: flex;
+  margin-bottom: 6px;
+  width: 100%;
+}
+
+.view-ticket-quantity-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.view-ticket-tag {
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+.view-ticket-hashtag {
+  color: blue;
+  cursor: pointer;
+}

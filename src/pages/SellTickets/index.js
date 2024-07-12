@@ -109,7 +109,7 @@ function SellTickets() {
         description,
         category,
         price,
-        quantity,
+        initialQuantityAvailable: quantity,
         type,
         currency,
         date,
