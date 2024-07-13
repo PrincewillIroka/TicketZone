@@ -169,8 +169,8 @@ function SellTickets() {
             <div className="sell-tickets-row">
               <input
                 type="date"
-                name="dateofbirth"
-                id="dateofbirth"
+                name="dateOfEvent"
+                id="dateOfEvent"
                 onChange={(e) => handleSetDate(e)}
               />
               <select
