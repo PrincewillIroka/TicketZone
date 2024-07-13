@@ -54,7 +54,7 @@ function Header() {
     );
     return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "NGN",
+      currency: "USD",
     }).format(totalAmount);
   };
 
