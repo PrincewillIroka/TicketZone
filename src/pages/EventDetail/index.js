@@ -49,9 +49,7 @@ function EventDetail() {
 
   const handleSetTicketQuantity = (value) => {
     setTicketQuantity(value);
-    if (isTicketInCart) {
-      handleAddTicketToCart(value);
-    }
+    handleAddTicketToCart(value);
   };
 
   return (
