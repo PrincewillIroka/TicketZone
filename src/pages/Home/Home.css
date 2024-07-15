@@ -17,14 +17,15 @@
 }
 
 .banner-title {
-  font-size: 48px;
-  max-width: 60%;
+  font-size: 3rem;
+  width: 70%;
   margin-bottom: 25px;
 }
 
 .banner-subtitle {
-  font-size: 20px;
+  font-size: 1.25rem;
   margin-bottom: 25px;
+  width: 50%;
 }
 
 .btn-cta {
@@ -311,12 +312,35 @@
     grid-template-columns: repeat(3, 1fr);
     column-gap: 3.5%;
   }
+
+  .banner-title {
+    font-size: 2.8rem;
+  }
+
+  .banner-subtitle {
+    font-size: 1.1rem;
+    width: 60%;
+  }
 }
 
 @media (max-width: 1200px) {
+  .banner-title {
+    font-size: 2.6rem;
+  }
+
+  .banner-subtitle {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 1080px) {
+  .banner-title {
+    font-size: 2.5rem;
+  }
+
+  .banner-subtitle {
+    width: 45%;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -347,6 +371,10 @@
   .feature-single:nth-child(3) {
     margin: 5% auto 0;
   }
+
+  .banner-title {
+    font-size: 2.2rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -357,10 +385,18 @@
   .explore-tag {
     margin-bottom: 7px;
   }
+
+  .banner-title {
+    font-size: 2.1rem;
+  }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .explore-items {
     grid-template-columns: repeat(1, 1fr);
+  }
+
+  .banner-title {
+    font-size: 2rem;
   }
 }
