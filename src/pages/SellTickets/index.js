@@ -66,8 +66,8 @@ function SellTickets() {
     }
   };
 
-  const handleGetCategories = useCallback(() => {
-    getCategories().then((response) => {
+  const handleGetCategories = useCallback(async () => {
+    await getCategories().then((response) => {
       const { success, categories = [], tags = [] } = response || {};
       if (success) {
         dispatch({

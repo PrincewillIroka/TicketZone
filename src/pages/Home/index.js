@@ -38,8 +38,8 @@ function Home() {
     });
   };
 
-  const handleGetCategories = useCallback(() => {
-    getCategories().then((response) => {
+  const handleGetCategories = useCallback(async () => {
+    await getCategories().then((response) => {
       const { success, categories = [], tags = [] } = response || {};
       if (success) {
         dispatch({
@@ -51,8 +51,8 @@ function Home() {
     });
   }, [dispatch]);
 
-  const handleGetEvents = useCallback(() => {
-    getEvents({ searchParam: "" }).then((response) => {
+  const handleGetEvents = useCallback(async () => {
+    await getEvents({ searchParam: "" }).then((response) => {
       const { success, data } = response || {};
       if (success) {
         dispatch({
