@@ -83,7 +83,7 @@ function ViewTicket({ selectedTicket, handleCloseModal }) {
             <span className="view-ticket-tag">Tags:</span>
             <div>
               {tags.map((tag, tagIndex) => (
-                <span className="view-ticket-hashtag">
+                <span className="view-ticket-hashtag" key={tagIndex}>
                   {`#`}
                   {tag}
                   {tagIndex < tags.length - 1 && ", "}
