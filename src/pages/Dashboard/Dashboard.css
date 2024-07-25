@@ -7,14 +7,14 @@
 .dashboard-section {
   display: flex;
   width: 100%;
-  padding-top: 90px;
-  height: calc(100% - 90px);
+  padding-top: 80px;
+  height: calc(100% - 80px);
 }
 
 .dashboard-aside {
   width: 18%;
   background-color: #1e2126;
-  padding-top: 90px;
+  padding-top: 80px;
 }
 
 .dashboard-tab {

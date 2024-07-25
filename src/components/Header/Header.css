@@ -6,7 +6,7 @@ header {
   align-items: center;
   position: fixed;
   width: 80%;
-  height: 90px;
+  height: 80px;
   z-index: 1;
   /* border-bottom: 1px solid #dfdede; */
   top: 0;
@@ -109,7 +109,7 @@ header {
 }
 
 .layout-container {
-  padding-top: 90px;
+  padding-top: 80px;
 }
 
 .header-icons {
