@@ -107,12 +107,14 @@ function Dashboard() {
           </button>
         </aside>
         <div className="dashboard-main">
-          <button
-            className="btn-create-ticket"
-            onClick={() => setTicketAction("Create")}
-          >
-            Create New Ticket
-          </button>
+          <div className="btn-create-ticket-wrapper">
+            <button
+              className="btn-create-ticket"
+              onClick={() => setTicketAction("Create")}
+            >
+              Create New Ticket
+            </button>
+          </div>
           <div className="dashboard-main-wrapper">
             {activeTab === "Tickets" &&
               (isLoadingEvents ? (
