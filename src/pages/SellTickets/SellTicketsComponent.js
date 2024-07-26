@@ -1,18 +1,19 @@
 import React, { useState, useCallback, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 import { LuBadgeCheck } from "react-icons/lu";
-import Header from "components/Header";
-import Footer from "components/Footer";
 import { createEvent, getCategories } from "services/eventServices";
 import { useStateValue } from "store/stateProvider";
 import { MONTHS_OF_THE_YEAR } from "utils";
 import "./SellTickets.css";
 
 function SellTicketsComponent() {
+  const navigate = useNavigate();
   const { state = {}, dispatch } = useStateValue();
-  const { homePage = {} } = state;
+  let { homePage = {}, user = {} } = state;
   let { categories = [] } = homePage;
+  const { _id = "" } = user;
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [venue, setVenue] = useState("");
@@ -21,9 +22,19 @@ function SellTicketsComponent() {
   const [quantity, setQuantity] = useState("");
   const [type, setType] = useState("Type");
   const [currency, setCurrency] = useState("Currency");
-  const [isLoading, setIsLoading] = useState(false);
   const [date, setDate] = useState(new Date());
+  const [isLoading, setIsLoading] = useState(false);
+  const [isCreatingEvent, setIsCreatingEvent] = useState(false);
   const [isSuccessful, setIsSuccessful] = useState(false);
+
+  const hasCompletedFormFields =
+    title &&
+    venue &&
+    type !== "Type" &&
+    quantity > 0 &&
+    price !== "" &&
+    currency !== "Currency" &&
+    category !== "Category";
 
   const handleSelect = (e, field) => {
     e.preventDefault();
@@ -33,7 +44,7 @@ function SellTicketsComponent() {
     } else if (field === "type") {
       setType(value);
       if (value === "Free") {
-        setPrice(0);
+        setPrice("");
         setCurrency("Currency");
       }
     } else if (field === "currency") {
@@ -67,72 +78,116 @@ function SellTicketsComponent() {
   };
 
   const handleGetCategories = useCallback(async () => {
-    await getCategories().then((response) => {
-      const { success, categories = [], tags = [] } = response || {};
-      if (success) {
-        dispatch({
-          type: "UPDATE_HOME_PAGE_CATEGORIES",
-          payload: { categories, displayedTags: tags },
-        });
+    await getCategories()
+      .then((response) => {
+        const { success, categories = [], tags = [] } = response || {};
+        if (success) {
+          dispatch({
+            type: "UPDATE_HOME_PAGE_CATEGORIES",
+            payload: { categories, displayedTags: tags },
+          });
+          setIsLoading(false);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
         setIsLoading(false);
-      }
-    });
+      });
   }, [dispatch]);
 
   useEffect(() => {
     handleGetCategories();
   }, [handleGetCategories]);
 
-  const handleContinue = async () => {
-    console.log({
-      title,
-      venue,
-      description,
-      category,
-      price,
-      quantity,
-      type,
-      currency,
-      date,
-    });
-    if (
-      title &&
-      venue &&
-      quantity > 0 &&
-      type !== "Type" &&
-      category !== "Category"
-    ) {
-      setIsLoading(true);
-      await createEvent({
+  useEffect(() => {
+    const temporaryTicket = JSON.parse(localStorage.getItem("temporaryTicket"));
+    if (temporaryTicket && Object.entries(temporaryTicket).length) {
+      const {
         title,
-        venue,
         description,
-        category,
-        price,
-        initialQuantityAvailable: quantity,
-        type,
-        currency,
+        venue,
         date,
-      })
-        .then((response) => {
-          if (response.success) {
-            setIsSuccessful(true);
-          }
-          setIsLoading(false);
-          setTimeout(() => {
-            setIsSuccessful(false);
-          }, 2500);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+        type,
+        quantity,
+        price,
+        currency,
+        category,
+      } = temporaryTicket;
+      setTitle(title);
+      setDescription(description);
+      setVenue(venue);
+      setDate(new Date(date));
+      setType(type);
+      setQuantity(quantity);
+      setPrice(price);
+      setCurrency(currency);
+      setCategory(category);
+      localStorage.removeItem("temporaryTicket");
     }
+  }, []);
+
+  const handleContinue = async (e) => {
+    e.preventDefault();
+    if (hasCompletedFormFields || !isCreatingEvent) {
+      const ownerId = _id;
+      const obj = {
+        title,
+        description,
+        venue,
+        date,
+        type,
+        quantity,
+        price,
+        currency,
+        category,
+      };
+
+      if (!ownerId) {
+        localStorage.setItem("temporaryTicket", JSON.stringify(obj));
+        navigate("/login");
+      } else {
+        obj.ownerId = ownerId;
+        obj.initialQuantityAvailable = quantity;
+        setIsCreatingEvent(true);
+        dispatch({
+          type: "USER_ADD_TEMP_TICKET",
+          payload: {},
+        });
+        await createEvent(obj)
+          .then((response) => {
+            if (response.success) {
+              setIsSuccessful(true);
+            }
+            setIsCreatingEvent(false);
+            setTimeout(() => {
+              setIsSuccessful(false);
+            }, 2500);
+            handleClearFields();
+          })
+          .catch((error) => {
+            console.error(error);
+            setIsCreatingEvent(false);
+          });
+      }
+    }
+  };
+
+  const handleClearFields = () => {
+    setTitle("");
+    setDescription("");
+    setVenue("");
+    setDate(new Date());
+    setType("Type");
+    setQuantity("");
+    setPrice();
+    setCurrency("Currency");
+    setCategory("Category");
   };
 
   return (
     <section className="sell-tickets-section">
-      <div className="sell-tickets-col">
-        <div className="alert-wrapper">
+      <form className="sell-tickets-col-1">
+        <div className="sell-tickets-col-heading-wrapper">
           <h3 className="sell-tickets-col-heading">Event Details</h3>
           <div
             className={`${
@@ -185,6 +240,7 @@ function SellTicketsComponent() {
             onChange={(e) => setQuantity(e.target.value)}
             value={quantity}
             type="Number"
+            min={1}
           />
         </div>
         <div className="sell-tickets-row">
@@ -194,6 +250,7 @@ function SellTicketsComponent() {
             value={price}
             onChange={(e) => handleSetPrice(e)}
             type="Number"
+            min={1}
           />
           <select
             className="sell-tickets-currency"
@@ -220,16 +277,21 @@ function SellTicketsComponent() {
           </select>
         </div>
         <button
-          className={`btn-sell-ticket ${
-            isLoading && "btn-sell-ticket-loading"
-          }`}
-          onClick={() => handleContinue()}
+          className={`btn-sell-ticket
+            ${
+              !hasCompletedFormFields || isCreatingEvent
+                ? "btn-sell-ticket-disabled"
+                : "btn-sell-ticket-enabled"
+            }`}
+          onClick={(e) => handleContinue(e)}
         >
-          {isLoading ? "Please wait..." : "Continue"}
+          {isLoading ? "Please wait..." : "Create Ticket(s)"}
         </button>
-      </div>
-      <div className="sell-tickets-col">
-        <h3 className="sell-tickets-col-heading">Ticket Preview</h3>
+      </form>
+      <div className="sell-tickets-col-2">
+        <div className="sell-tickets-col-heading-wrapper">
+          <h3 className="sell-tickets-col-heading">Ticket Preview</h3>
+        </div>
         <div className="sell-tickets-preview">
           <div className="item">
             <div className="item-right">
