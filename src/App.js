@@ -4,7 +4,7 @@ import Auth from "pages/Auth";
 import EventsCategory from "pages/EventsCategory";
 import Dashboard from "pages/Dashboard";
 import HowItWorks from "pages/HowItWorks";
-import BuyATicket from "pages/BuyATicket";
+import BuyTickets from "pages/BuyTickets";
 import SellTickets from "pages/SellTickets";
 import Explore from "pages/Explore";
 import EventDetail from "pages/EventDetail";
@@ -25,7 +25,7 @@ function App() {
           <Route path="/signup" element={<Auth />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
-          <Route path="/buy-a-ticket" element={<BuyATicket />} />
+          <Route path="/buy-a-ticket" element={<BuyTickets />} />
           <Route path="/sell-tickets" element={<SellTickets />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/explore-category/:page" element={<EventsCategory />} />
