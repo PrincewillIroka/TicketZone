@@ -25,7 +25,7 @@ function App() {
           <Route path="/signup" element={<Auth />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
-          <Route path="/buy-a-ticket" element={<BuyTickets />} />
+          <Route path="/buy-tickets" element={<BuyTickets />} />
           <Route path="/sell-tickets" element={<SellTickets />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/explore-category/:page" element={<EventsCategory />} />
