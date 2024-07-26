@@ -5,10 +5,10 @@ import Header from "components/Header";
 import { useStateValue } from "store/stateProvider";
 import { getUserEvents } from "services/userServices";
 import ImagePlaceholder from "assets/No-Image-Placeholder.png";
-import "./Dashboard.css";
-import ViewTicket from "pages/Dashboard/Modals/ViewTicket";
-import EditTicket from "pages/Dashboard/Modals/EditTicket";
+import ViewTicket from "../Dashboard/Modals/ViewTicket";
+import EditTicket from "../Dashboard/Modals/EditTicket";
 import { createArrayItems } from "utils";
+import "./Dashboard.css";
 
 function Dashboard(props) {
   const [activeTab, setActiveTab] = useState("Tickets");

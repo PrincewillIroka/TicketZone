@@ -1,6 +1,6 @@
 import React from "react";
 import ImagePlaceholder from "assets/No-Image-Placeholder.png";
-import "./Modals.css";
+import "../Modals.css";
 import "./EditTicket.css";
 
 function EditTicket({ selectedTicket, handleCloseModal }) {
