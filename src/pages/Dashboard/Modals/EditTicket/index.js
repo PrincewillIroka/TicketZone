@@ -1,36 +1,27 @@
 import React from "react";
-import ImagePlaceholder from "assets/No-Image-Placeholder.png";
+import SellTicketsComponent from "pages/SellTickets/SellTicketsComponent";
 import "../Modals.css";
 import "./EditTicket.css";
 
-function EditTicket({ selectedTicket, handleCloseModal }) {
-  const {
-    title = "",
-    description = "",
-    venue = "",
-    price = 0,
-    images = [],
-    currency = "",
-    date = "",
-    tags = [],
-    quantityOfTicketsCreated = 0,
-    quantityOfTicketsSold = 0,
-    category = {},
-    type = "",
-  } = selectedTicket;
-  const eventDate = new Date(date);
-  const imgSrc = images && images.length ? images[0] : ImagePlaceholder;
-
+function EditTicket({ handleCloseModal }) {
   return (
     <div className="modal">
-      <div className="modal-content">
-        <div className="modal-top-row">
+      <div className="edit-ticket-modal-content">
+        <div className="edit-ticket-modal-top-row">
           <span className="modal-title">Edit Ticket</span>
-          <span className="close" onClick={() => handleCloseModal()}>
+          <span
+            className="close"
+            onClick={() => {
+              localStorage.removeItem("temporaryTicket");
+              handleCloseModal();
+            }}
+          >
             &times;
           </span>
         </div>
-        <div className="edit-ticket-container"></div>
+        <div className="edit-ticket-container">
+          <SellTicketsComponent />
+        </div>
       </div>
     </div>
   );

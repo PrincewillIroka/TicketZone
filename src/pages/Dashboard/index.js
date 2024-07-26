@@ -58,6 +58,9 @@ function Dashboard() {
   };
 
   const handleSelectTicket = (ticket, ticketAction) => {
+    if (ticketAction === "Edit") {
+      localStorage.setItem("temporaryTicket", JSON.stringify(ticket));
+    }
     setTicketAction(ticketAction);
     setSelectedTicket(ticket);
   };
