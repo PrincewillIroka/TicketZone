@@ -24,15 +24,18 @@
 }
 
 .view-ticket-quantity-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 33.3%);
   width: 100%;
 }
 
 .view-ticket-tag {
   font-weight: 600;
   margin-right: 5px;
+}
+
+.view-ticket-currency {
+  margin-left: 3px;
 }
 
 .view-ticket-hashtag {

@@ -168,9 +168,9 @@ function Home() {
             ) : !events.length ? (
               <div className="explore-item-none">No event found.</div>
             ) : (
-              events.map((event, index) => (
-                <EventCard event={event} key={index} />
-              ))
+              events
+                .slice(0, 12)
+                .map((event, index) => <EventCard event={event} key={index} />)
             )}
           </div>
           <div className="explore-more">

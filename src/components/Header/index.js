@@ -87,10 +87,10 @@ function Header() {
         </li>
         <li
           className={`nav-link ${
-            getActiveTab("buy-a-ticket") && "nav-link-active"
+            getActiveTab("buy-tickets") && "nav-link-active"
           }`}
         >
-          <Link to="/buy-a-ticket">Buy A Ticket</Link>
+          <Link to="/buy-tickets">Buy A Ticket</Link>
         </li>
         <li
           className={`nav-link ${

@@ -1,9 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import ImagePlaceholder from "assets/No-Image-Placeholder.png";
 
 function EventCard({ event }) {
   const navigate = useNavigate();
-  const { title, venue } = event;
+  const { title = "", venue = "", images = [] } = event;
+  const imgSrc = images && images.length ? images[0] : ImagePlaceholder;
 
   const handleNavigate = (page) => {
     navigate(page, { state: { event } });
@@ -19,11 +21,7 @@ function EventCard({ event }) {
   return (
     <div className="explore-item" onClick={() => handleNavigate(eventAlias)}>
       <div className="explore-item-wallpaper">
-        <img
-          src="https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-          className="explore-item-img"
-          alt=""
-        />
+        <img src={imgSrc} className="explore-item-img" alt="" />
       </div>
       <h3 className="explore-item-title">{title}</h3>
       <div className="explore-item-calendar">
