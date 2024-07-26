@@ -9,6 +9,7 @@ import "./EventDetail.css";
 function EventDetail() {
   const { state: locationState } = useLocation();
   const { state, dispatch } = useStateValue();
+  const { event = {} } = locationState;
   const {
     _id = "",
     title = "",
@@ -17,7 +18,7 @@ function EventDetail() {
     price = "",
     description = "",
     category = {},
-  } = locationState;
+  } = event;
   const { ticketCart = [] } = state;
   const [activeImage, setActiveImage] = useState(images[0]);
 

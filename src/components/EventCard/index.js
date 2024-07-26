@@ -6,7 +6,7 @@ function EventCard({ event }) {
   const { title, venue } = event;
 
   const handleNavigate = (page) => {
-    navigate(page, { state: event });
+    navigate(page, { state: { event } });
   };
 
   const getEventAlias = (title) => {

@@ -15,6 +15,7 @@ function Header() {
   const { isUserLoggedIn, ticketCart = [] } = state;
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [eventSearchValue, setEventSearchValue] = useState("");
+  const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
 
   const handleNavigate = (page) => {
     navigate(page);
@@ -24,6 +25,10 @@ function Header() {
     const str = location.pathname.split("/")[1];
     const isActiveTab = str.includes(value.toLowerCase());
     return isActiveTab;
+  };
+
+  const toggleHamburgerMenu = () => {
+    setIsHamburgerMenuOpen(!isHamburgerMenuOpen);
   };
 
   const handleSearchEvents = (e) => {
@@ -62,11 +67,18 @@ function Header() {
 
   return (
     <header>
-      <ul className="nav-links">
-        <li>
+      <ul className={`nav-links ${isHamburgerMenuOpen && "nav-links-full"}`}>
+        <li className="nav-link-logo">
           <Link to="/">
             <img src="/logo.png" className="img-logo" alt="Logo" />
           </Link>
+        </li>
+        <li
+          className={`nav-link ${
+            getActiveTab("") && "nav-link-active"
+          } nav-link-home`}
+        >
+          <Link to="/">Home</Link>
         </li>
         <li
           className={`nav-link ${getActiveTab("explore") && "nav-link-active"}`}
@@ -94,9 +106,18 @@ function Header() {
         >
           <Link to="/how-it-works">How It Works</Link>
         </li>
+        <li
+          className="nav-link-close-menu"
+          onClick={() => toggleHamburgerMenu()}
+        >
+          <IoMdClose className="nav-link-close-menu-icon" />
+        </li>
       </ul>
       <div className="nav-hamburger-wrapper">
-        <GiHamburgerMenu className="hamburger-wrapper" />
+        <GiHamburgerMenu
+          className="nav-hamburger-menu"
+          onClick={() => toggleHamburgerMenu()}
+        />
       </div>
       <ul className="nav-controls">
         <li className="search-input-container">

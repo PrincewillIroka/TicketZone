@@ -1,0 +1,20 @@
+.create-ticket-modal-content {
+  background-color: #fefefe;
+  border-radius: 5px;
+  padding: 15px 20px;
+  border: 1px solid #888;
+  width: 65%;
+  height: 82%;
+  display: flex;
+  flex-direction: column;
+}
+
+.create-ticket-container {
+  margin-top: 30px;
+}
+
+.create-ticket-modal-top-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}

@@ -2,19 +2,30 @@
   padding: 10% 10% 7%;
 }
 
-.sell-tickets-section {
-  display: flex;
-  justify-content: space-between;
+.sell-tickets-wrapper {
   height: 60vh;
 }
 
-.sell-tickets-col {
-  width: 45%;
+.sell-tickets-section {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.sell-tickets-col-1 {
+  /* margin-right: 5%; */
+}
+
+.sell-tickets-col-1,
+.sell-tickets-col-2 {
+  width: 47%;
   display: flex;
   flex-direction: column;
 }
 
 .sell-tickets-col-heading {
+  opacity: 0.9;
+  font-size: 16px;
 }
 
 .sell-tickets-input {
@@ -74,7 +85,6 @@ input[type="date"] {
 }
 
 .item {
-  width: 100%;
   padding: 0 20px;
   background: #fff;
   overflow: hidden;
@@ -191,7 +201,6 @@ input[type="date"] {
 }
 
 .btn-sell-ticket {
-  background-color: #f61253;
   height: 50px;
   width: 100%;
   color: #fff;
@@ -200,20 +209,25 @@ input[type="date"] {
   font-size: 17px;
   font-weight: 600;
   text-transform: uppercase;
-  cursor: pointer;
   margin-top: 35px;
 }
 
-.btn-sell-ticket:hover {
+.btn-sell-ticket-enabled {
+  background-color: #f61253;
+  cursor: pointer;
+}
+
+.btn-sell-ticket-enabled:hover {
   opacity: 0.9;
 }
 
-.btn-sell-ticket-loading {
+.btn-sell-ticket-disabled {
+  background-color: rgba(246, 18, 83, 0.6);
   cursor: not-allowed;
-  background-color: rgba(246, 18, 83, 0.9);
+  pointer-events: none;
 }
 
-.alert-wrapper {
+.sell-tickets-col-heading-wrapper {
   margin-bottom: 30px;
   display: flex;
   align-items: center;
@@ -253,6 +267,7 @@ input[type="date"] {
 
 .sell-tickets-alert-displayed {
   visibility: visible;
+  position: absolute;
 }
 
 .sell-tickets-alert-hidden {

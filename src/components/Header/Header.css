@@ -6,7 +6,7 @@ header {
   align-items: center;
   position: fixed;
   width: 80%;
-  height: 90px;
+  height: 80px;
   z-index: 1;
   /* border-bottom: 1px solid #dfdede; */
   top: 0;
@@ -27,6 +27,10 @@ header {
   /* font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; */
 }
 
+.nav-link-home {
+  display: none;
+}
+
 .nav-links li {
   margin-right: 50px;
   font-weight: bold;
@@ -43,6 +47,10 @@ header {
 
 .nav-links li:hover {
   color: #f61253;
+}
+
+.nav-link-close-menu {
+  display: none;
 }
 
 .nav-hamburger-wrapper {
@@ -101,7 +109,7 @@ header {
 }
 
 .layout-container {
-  padding-top: 90px;
+  padding-top: 80px;
 }
 
 .header-icons {
@@ -273,13 +281,53 @@ header {
   }
 
   .nav-hamburger-wrapper {
-    display: flex;
+    display: block;
   }
 
-  .hamburger-wrapper {
+  .nav-hamburger-menu {
     height: 25px;
     width: 25px;
     color: #ffffff;
+    cursor: pointer;
+  }
+
+  .nav-link-logo {
+    display: none;
+  }
+
+  .nav-link-home {
+    display: block;
+    margin-top: 80px !important;
+  }
+
+  .nav-links-full {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #000000;
+    z-index: 2;
+  }
+
+  .nav-link-close-menu {
+    right: 15px;
+    top: 15px;
+    display: block;
+    position: absolute;
+  }
+
+  .nav-link-close-menu-icon {
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    color: #ffffff;
+  }
+
+  .nav-link {
+    margin-top: 40px;
   }
 }
 

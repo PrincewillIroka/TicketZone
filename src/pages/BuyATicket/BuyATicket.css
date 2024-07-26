@@ -5,3 +5,9 @@
 .buy-a-ticket-section {
   height: 60vh;
 }
+
+.buy-a-ticket-form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}

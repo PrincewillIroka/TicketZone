@@ -5,12 +5,13 @@ import Header from "components/Header";
 import { useStateValue } from "store/stateProvider";
 import { getUserEvents } from "services/userServices";
 import ImagePlaceholder from "assets/No-Image-Placeholder.png";
-import "./Dashboard.css";
-import ViewTicket from "pages/Dashboard/Modals/ViewTicket";
-import EditTicket from "pages/Dashboard/Modals/EditTicket";
 import { createArrayItems } from "utils";
+import ViewTicket from "../Dashboard/Modals/ViewTicket";
+import EditTicket from "../Dashboard/Modals/EditTicket";
+import CreateTicket from "../Dashboard/Modals/CreateTicket";
+import "./Dashboard.css";
 
-function Dashboard(props) {
+function Dashboard() {
   const [activeTab, setActiveTab] = useState("Tickets");
   const navigate = useNavigate();
   const { dispatch, state } = useStateValue();
@@ -48,6 +49,7 @@ function Dashboard(props) {
   const handleLogOut = () => {
     localStorage.removeItem("isUserLoggedIn");
     localStorage.removeItem("user");
+    localStorage.removeItem("temporaryTicket");
     dispatch({
       type: "USER_LOG_OUT",
     });
@@ -105,12 +107,14 @@ function Dashboard(props) {
           </button>
         </aside>
         <div className="dashboard-main">
-          <button
-            className="btn-create-ticket"
-            onClick={() => handleNavigate("/sell-tickets")}
-          >
-            Create New Ticket
-          </button>
+          <div className="btn-create-ticket-wrapper">
+            <button
+              className="btn-create-ticket"
+              onClick={() => setTicketAction("Create")}
+            >
+              Create New Ticket
+            </button>
+          </div>
           <div className="dashboard-main-wrapper">
             {activeTab === "Tickets" &&
               (isLoadingEvents ? (
@@ -192,13 +196,19 @@ function Dashboard(props) {
       {ticketAction === "View" && (
         <ViewTicket
           selectedTicket={selectedTicket}
-          handleCloseModal={handleCloseModal}
+          handleCloseModal={() => handleCloseModal()}
         />
       )}
       {ticketAction === "Edit" && (
         <EditTicket
           selectedTicket={selectedTicket}
-          handleCloseModal={handleCloseModal}
+          handleCloseModal={() => handleCloseModal()}
+        />
+      )}
+      {ticketAction === "Create" && (
+        <CreateTicket
+          selectedTicket={selectedTicket}
+          handleCloseModal={() => handleCloseModal()}
         />
       )}
     </div>

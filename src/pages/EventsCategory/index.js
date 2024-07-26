@@ -14,8 +14,8 @@ function EventsCategory() {
   const alias = pathname.split("/")[2];
   const { categoryName = "" } = state;
 
-  const handleGetEventsCategory = useCallback(() => {
-    getEventsCategory({ alias }).then((response) => {
+  const handleGetEventsCategory = useCallback(async () => {
+    await getEventsCategory({ alias }).then((response) => {
       const { success, data } = response || {};
       if (success) {
         setIsLoading(false);

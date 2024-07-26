@@ -1,6 +1,6 @@
 import React from "react";
 import ImagePlaceholder from "assets/No-Image-Placeholder.png";
-import "./Modals.css";
+import "../Modals.css";
 import "./ViewTicket.css";
 
 function ViewTicket({ selectedTicket, handleCloseModal }) {
@@ -83,7 +83,7 @@ function ViewTicket({ selectedTicket, handleCloseModal }) {
             <span className="view-ticket-tag">Tags:</span>
             <div>
               {tags.map((tag, tagIndex) => (
-                <span className="view-ticket-hashtag">
+                <span className="view-ticket-hashtag" key={tagIndex}>
                   {`#`}
                   {tag}
                   {tagIndex < tags.length - 1 && ", "}
