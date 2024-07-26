@@ -53,7 +53,7 @@ function ViewTicket({ selectedTicket, handleCloseModal }) {
           <div className="view-ticket-row">
             <span className="view-ticket-tag">Price:</span>
             <span>{price}</span>
-            <span>{currency}</span>
+            <span className="view-ticket-currency">{currency}</span>
           </div>
           <div className="view-ticket-row">
             <span className="view-ticket-tag">Date:</span>
@@ -75,10 +75,21 @@ function ViewTicket({ selectedTicket, handleCloseModal }) {
               </div>
             </div>
           </div>
+
           <div className="view-ticket-row">
-            <span className="view-ticket-tag">Category:</span>
-            <span>{category?.name}</span>
+            <div className="view-ticket-quantity-row">
+              <div>
+                <span className="view-ticket-tag">Category:</span>
+                <span>{category?.name}</span>
+              </div>
+              <div>
+                <span className="view-ticket-tag">Type:</span>
+                <span>{type}</span>
+              </div>
+              <div></div>
+            </div>
           </div>
+
           <div className="view-ticket-row">
             <span className="view-ticket-tag">Tags:</span>
             <div>
