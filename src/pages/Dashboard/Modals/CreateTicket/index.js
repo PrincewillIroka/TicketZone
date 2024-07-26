@@ -25,7 +25,7 @@ function CreateTicket({ selectedTicket, handleCloseModal }) {
   return (
     <div className="modal">
       <div className="create-ticket-modal-content">
-        <div className="modal-top-row">
+        <div className="create-ticket-modal-top-row">
           <span className="modal-title">Create New Ticket</span>
           <span className="close" onClick={() => handleCloseModal()}>
             &times;
