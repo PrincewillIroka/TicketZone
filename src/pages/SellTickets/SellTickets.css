@@ -2,10 +2,14 @@
   padding: 10% 10% 7%;
 }
 
+.sell-tickets-wrapper {
+  height: 60vh;
+}
+
 .sell-tickets-section {
   display: flex;
   justify-content: space-between;
-  height: 60vh;
+  height: 100%;
 }
 
 .sell-tickets-col {
