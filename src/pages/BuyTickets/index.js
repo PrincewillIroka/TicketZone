@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import Header from "components/Header";
 import Footer from "components/Footer";
-import "./BuyTickets.css";
+import EventCard from "components/EventCard";
 import { useStateValue } from "store/stateProvider";
+import "./BuyTickets.css";
 
 function BuyTickets(props) {
   const { state = {}, dispatch } = useStateValue();
   const { homePage = {} } = state;
-  let { categories = [] } = homePage;
+  let { categories = [], events = [] } = homePage;
+  const [title, setTitle] = useState("");
   const [category, setCategory] = useState("Category");
-  const [price, setPrice] = useState("");
   const [type, setType] = useState("Type");
   const [date, setDate] = useState(new Date());
+  const [isLoading, setIsLoading] = useState(false);
+  const hasCompletedFormFields =
+    title && category !== "Category" && type !== "Type";
 
   const handleSelect = (e, field) => {
     e.preventDefault();
@@ -20,9 +24,6 @@ function BuyTickets(props) {
       setCategory(value);
     } else if (field === "type") {
       setType(value);
-      if (value === "Free") {
-        setPrice(0);
-      }
     }
   };
 
@@ -32,6 +33,8 @@ function BuyTickets(props) {
     setDate(new Date(value));
   };
 
+  const handleContinue = async (e) => {};
+
   return (
     <div>
       <Header />
@@ -39,9 +42,12 @@ function BuyTickets(props) {
         <div className="buy-tickets-wrapper">
           <section className="buy-tickets-section">
             <form className="buy-tickets-form">
-              <input placeholder="Title of event" />
+              <input
+                placeholder="Title of event"
+                className="buy-tickets-input"
+              />
               <select
-                className="sell-tickets-category"
+                className="buy-tickets-category"
                 onChange={(e) => handleSelect(e, "category")}
                 defaultValue={category}
               >
@@ -55,7 +61,7 @@ function BuyTickets(props) {
                 })}
               </select>
               <select
-                className="sell-tickets-type"
+                className="buy-tickets-category"
                 onChange={(e) => handleSelect(e, "type")}
                 value={type}
               >
@@ -67,9 +73,26 @@ function BuyTickets(props) {
                 type="date"
                 name="dateOfEvent"
                 id="dateOfEvent"
+                className="buy-tickets-category"
                 onChange={(e) => handleSetDate(e)}
               />
+              <button
+                className={`btn-sell-ticket
+                ${
+                  !hasCompletedFormFields
+                    ? "btn-sell-ticket-disabled"
+                    : "btn-sell-ticket-enabled"
+                }`}
+                onClick={(e) => handleContinue(e)}
+              >
+                {isLoading ? "Please wait..." : "Continue"}
+              </button>
             </form>
+            <div className="buy-tickets-items">
+              {events.map((event, index) => (
+                <EventCard event={event} key={index} />
+              ))}
+            </div>
           </section>
         </div>
       </div>
