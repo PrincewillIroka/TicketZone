@@ -9,9 +9,7 @@ function SellTickets() {
     <div>
       <Header />
       <div className="sell-tickets-container">
-        <div className="sell-tickets-wrapper">
-          <SellTicketsComponent />
-        </div>
+        <SellTicketsComponent />
       </div>
       <Footer />
     </div>

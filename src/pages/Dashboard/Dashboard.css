@@ -195,6 +195,34 @@
 }
 
 @media (max-width: 1080px) {
+  .dashboard-section {
+    justify-content: center;
+  }
+  .dashboard-aside {
+    display: none;
+  }
+
+  .dashboard-main {
+    width: 80%;
+  }
+
+  .btn-create-ticket-wrapper {
+    margin: 0;
+  }
+
+  .dashboard-main-wrapper {
+    padding: 0 5px;
+    width: calc(100% - 10px);
+  }
+
+  .dashboard-main-tickets {
+    margin: 0 0 150px;
+  }
+
+  .sell-tickets-section {
+    height: 55%;
+    overflow-y: auto;
+  }
 }
 
 @media (max-width: 1024px) {
