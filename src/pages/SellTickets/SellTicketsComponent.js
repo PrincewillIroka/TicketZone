@@ -293,7 +293,7 @@ function SellTicketsComponent() {
           <h3 className="sell-tickets-col-heading">Ticket Preview</h3>
         </div>
         <div className="sell-tickets-preview">
-          <div className="item">
+          <div className="item-container">
             <div className="item-right">
               <h2 className="num">{date.getDate()}</h2>
               <p className="day">{getMonth()}</p>

@@ -22,8 +22,14 @@ function Header() {
   };
 
   const getActiveTab = (value) => {
-    const str = location.pathname.split("/")[1];
-    const isActiveTab = str.includes(value.toLowerCase());
+    let isActiveTab;
+    if (value === "home") {
+      isActiveTab = location.pathname === "/";
+    } else {
+      const str = location.pathname.split("/")[1];
+      isActiveTab = str.includes(value.toLowerCase());
+    }
+
     return isActiveTab;
   };
 
@@ -75,7 +81,7 @@ function Header() {
         </li>
         <li
           className={`nav-link ${
-            getActiveTab("") && "nav-link-active"
+            getActiveTab("home") && "nav-link-active"
           } nav-link-home`}
         >
           <Link to="/">Home</Link>

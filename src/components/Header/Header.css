@@ -270,6 +270,9 @@ header {
 }
 
 @media (max-width: 1200px) {
+  .cart-container {
+    width: 40%;
+  }
 }
 
 @media (max-width: 1080px) {
@@ -329,12 +332,19 @@ header {
   .nav-link {
     margin-top: 40px;
   }
+
+  .cart-container {
+    width: 50%;
+  }
 }
 
 @media (max-width: 1024px) {
 }
 
 @media (max-width: 969px) {
+  .cart-container {
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {

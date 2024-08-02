@@ -22,7 +22,11 @@ function Footer() {
         <div className="footer-col footer-col-1">
           <b className="footer-col-heading">Products</b>
           <ul>
-            <li>Ticketing</li>
+            <li>
+              <Link to="/buy-tickets" className="footer-social-icon-container">
+                Ticketing
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="footer-col footer-col-2">

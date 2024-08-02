@@ -1,19 +1,11 @@
 .sell-tickets-container {
-  padding: 10% 10% 7%;
-}
-
-.sell-tickets-wrapper {
-  height: 60vh;
+  padding: 8rem 10%;
 }
 
 .sell-tickets-section {
   display: flex;
   justify-content: space-between;
   height: 100%;
-}
-
-.sell-tickets-col-1 {
-  /* margin-right: 5%; */
 }
 
 .sell-tickets-col-1,
@@ -84,7 +76,7 @@ input[type="date"] {
   font-family: "Cabin", sans-serif;
 }
 
-.item {
+.item-container {
   padding: 0 20px;
   background: #fff;
   overflow: hidden;
@@ -172,7 +164,7 @@ input[type="date"] {
   margin-right: 10px;
 }
 
-.item .tickets,
+.item-container .tickets,
 .booked,
 .cancel {
   color: #fff;
@@ -184,15 +176,15 @@ input[type="date"] {
   cursor: pointer;
 }
 
-.item .tickets {
+.item-container .tickets {
   background: #000;
 }
 
-.item .booked {
+.item-container .booked {
   background: #3d71e9;
 }
 
-.item .cancel {
+.item-container .cancel {
   background: #df5454;
 }
 
@@ -273,4 +265,19 @@ input[type="date"] {
 .sell-tickets-alert-hidden {
   visibility: hidden;
   top: -100px;
+}
+
+@media (max-width: 1080px) {
+  .sell-tickets-section {
+    flex-direction: column-reverse;
+  }
+
+  .sell-tickets-col-1,
+  .sell-tickets-col-2 {
+    width: 100%;
+  }
+
+  .sell-tickets-col-2 {
+    margin-bottom: 60px;
+  }
 }
