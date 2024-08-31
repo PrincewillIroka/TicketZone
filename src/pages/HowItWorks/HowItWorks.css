@@ -5,3 +5,41 @@
 .how-it-works-section {
   height: 60vh;
 }
+
+.how-it-works {
+  background-color: #f5f5f5;
+  padding: 40px 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.step {
+  width: 25%;
+  padding: 20px;
+  text-align: center;
+  margin: 0 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+  font-size: 3em;
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+.step h3 {
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.step p {
+  color: #666;
+  line-height: 1.6;
+}
