@@ -2,6 +2,7 @@
 
 .how-it-works-container {
   padding: 10% 10% 7%;
+  background-color: #fafafa;
 }
 
 .how-it-works-section {
@@ -9,8 +10,8 @@
 }
 
 .how-it-works {
-  background-color: #f0f4f8;
-  padding: 60px 20px;
+  /* background-color: #f4f2f2; */
+  padding: 20px 20px 60px;
   font-family: "Poppins", sans-serif;
 }
 
