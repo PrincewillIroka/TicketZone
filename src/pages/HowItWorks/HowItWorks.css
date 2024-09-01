@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
 .how-it-works-container {
   padding: 10% 10% 7%;
 }
@@ -7,39 +9,126 @@
 }
 
 .how-it-works {
-  background-color: #f5f5f5;
-  padding: 40px 0;
+  background-color: #f0f4f8;
+  padding: 60px 20px;
+  font-family: "Poppins", sans-serif;
 }
 
-.container {
+.title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #2d3748;
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.steps-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.step-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.8s ease-out;
+  animation-fill-mode: both;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 
-.step {
-  width: 25%;
-  padding: 20px;
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.step-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
   text-align: center;
-  margin: 0 10px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.icon {
-  font-size: 3em;
-  color: #007bff;
-  margin-bottom: 15px;
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 20px 0;
+  transition: all 0.3s ease;
 }
 
-.step h3 {
-  font-size: 1.2em;
-  color: #333;
-  margin-bottom: 10px;
+.step-icon {
+  width: 40px;
+  height: 40px;
+  color: white;
+  transition: transform 0.3s ease;
 }
 
-.step p {
-  color: #666;
+.step-card:hover .step-icon {
+  transform: scale(1.1);
+}
+
+.step-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 12px;
+}
+
+.step-description {
+  color: #4a5568;
   line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .steps-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.step-card:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.step-card:nth-child(3) {
+  animation-delay: 0.5s;
+}
+.step-card:nth-child(4) {
+  animation-delay: 0.7s;
 }
