@@ -169,18 +169,20 @@ function Home() {
               <div className="explore-item-none">No event found.</div>
             ) : (
               events
-                .slice(0, 12)
+                .slice(0, 8)
                 .map((event, index) => <EventCard event={event} key={index} />)
             )}
           </div>
-          <div className="explore-more">
-            <button
-              onClick={() => handleNavigate("/explore")}
-              className="btn-explore-show-more"
-            >
-              Show more
-            </button>
-          </div>
+          {events.length > 8 && (
+            <div className="explore-more">
+              <button
+                onClick={() => handleNavigate("/explore")}
+                className="btn-explore-show-more"
+              >
+                Show more
+              </button>
+            </div>
+          )}
         </section>
         <div className="explore-curve-bg-1">
           <img src={CurveSvg} className="explore-curve-1" alt="CurveSvg" />
