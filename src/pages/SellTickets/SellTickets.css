@@ -68,7 +68,7 @@ input[type="date"] {
 }
 
 .sell-tickets-preview {
-  background-color: #dddddd;
+  background-color: #f0f4f8;
   font-family: "Inknut Antiqua", serif;
   font-family: "Ravi Prakash", cursive;
   font-family: "Lora", serif;
@@ -109,7 +109,7 @@ input[type="date"] {
 .up-border,
 .down-border {
   padding: 14px 15px;
-  background-color: #ddd;
+  background-color: #f0f4f8;
   border-radius: 50%;
   position: absolute;
 }

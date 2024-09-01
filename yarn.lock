@@ -8868,6 +8868,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lucide-react@npm:^0.437.0":
+  version: 0.437.0
+  resolution: "lucide-react@npm:0.437.0"
+  peerDependencies:
+    react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
+  checksum: 802922ff254fc6ab6e92e21b270ba2286b9eecdeaf591c32e3b04dd5908e788b5dc7e4bca135f7cc7d77cdb1fd8e3ad8df81bf2ec93d9840629560af412f7b25
+  languageName: node
+  linkType: hard
+
 "lz-string@npm:^1.5.0":
   version: 1.5.0
   resolution: "lz-string@npm:1.5.0"
@@ -12533,6 +12542,7 @@ __metadata:
     "@testing-library/jest-dom": ^5.17.0
     "@testing-library/react": ^13.4.0
     "@testing-library/user-event": ^13.5.0
+    lucide-react: ^0.437.0
     react: ^18.2.0
     react-dom: ^18.2.0
     react-icons: ^4.11.0
