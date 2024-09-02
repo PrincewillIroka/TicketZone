@@ -258,6 +258,9 @@ function SellTicketsComponent() {
             value={currency}
           >
             <option disabled>Currency</option>
+            <option>CAD</option>
+            <option>EUR</option>
+            <option>GBP</option>
             <option>NGN</option>
             <option>USD</option>
           </select>
