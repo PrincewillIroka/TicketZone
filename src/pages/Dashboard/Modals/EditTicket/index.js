@@ -3,7 +3,7 @@ import SellTicketsComponent from "pages/SellTickets/SellTicketsComponent";
 import "../Modals.css";
 import "./EditTicket.css";
 
-function EditTicket({ handleCloseModal }) {
+function EditTicket({ handleCloseModal, ticketAction }) {
   return (
     <div className="modal">
       <div className="edit-ticket-modal-content">
@@ -20,7 +20,7 @@ function EditTicket({ handleCloseModal }) {
           </span>
         </div>
         <div className="edit-ticket-container">
-          <SellTicketsComponent />
+          <SellTicketsComponent ticketAction={ticketAction} />
         </div>
       </div>
     </div>

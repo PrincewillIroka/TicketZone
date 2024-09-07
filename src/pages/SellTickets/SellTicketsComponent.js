@@ -8,7 +8,7 @@ import { useStateValue } from "store/stateProvider";
 import { MONTHS_OF_THE_YEAR } from "utils";
 import "./SellTickets.css";
 
-function SellTicketsComponent() {
+function SellTicketsComponent({ ticketAction }) {
   const navigate = useNavigate();
   const { state = {}, dispatch } = useStateValue();
   let { homePage = {}, user = {} } = state;
@@ -288,7 +288,11 @@ function SellTicketsComponent() {
             }`}
           onClick={(e) => handleContinue(e)}
         >
-          {isLoading ? "Please wait..." : "Create Ticket(s)"}
+          {isLoading
+            ? "Please wait..."
+            : ticketAction === "Edit"
+            ? "Edit Ticket(s)"
+            : "Create Ticket(s)"}
         </button>
       </form>
       <div className="sell-tickets-col-2">
@@ -298,10 +302,10 @@ function SellTicketsComponent() {
         <div className="sell-tickets-preview">
           <div className="item-container">
             <div className="item-right">
-              <h2 className="num">{date.getDate()}</h2>
-              <p className="day">{getMonth()}</p>
+              <h2 className="num">{date.getDate() || "Date"}</h2>
+              <p className="day">{getMonth() || "Month"}</p>
               <div className="item-price">
-                <h4>Price:</h4>
+                <h4>Price {price && ":"}</h4>
                 <span className="item-amount">{price}</span>
                 {price > 0 && <span className="item-currency">{currency}</span>}
               </div>
@@ -310,8 +314,10 @@ function SellTicketsComponent() {
             </div>
 
             <div className="item-left">
-              <p className="event">{title ? title : "Title of Event"}</p>
-              <h2 className="title">
+              <p className="item-title" title={title}>
+                {title ? title : "Title of Event"}
+              </p>
+              <h2 className="item-description" title={description}>
                 {description ? description : "Description of Event"}
               </h2>
               <div className="sce">
@@ -319,7 +325,8 @@ function SellTicketsComponent() {
                   <FaRegCalendarAlt />
                 </div>
                 <p>
-                  {date.toDateString()} <br /> {date.toLocaleTimeString()}
+                  {/* {date.toDateString()} <br />  */}
+                  {date.toLocaleTimeString()}
                 </p>
               </div>
               <div className="fix"></div>
@@ -327,7 +334,9 @@ function SellTicketsComponent() {
                 <div className="icon">
                   <IoLocationSharp />
                 </div>
-                <p>{venue ? venue : "Venue of Event"}</p>
+                <p className="item-venue" title={venue}>
+                  {venue ? venue : "Venue of Event"}
+                </p>
               </div>
               <button className="tickets">Event Ticket</button>
             </div>

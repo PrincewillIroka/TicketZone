@@ -196,12 +196,14 @@ function Dashboard() {
         <EditTicket
           selectedTicket={selectedTicket}
           handleCloseModal={() => handleCloseModal()}
+          ticketAction={ticketAction}
         />
       )}
       {ticketAction === "Create" && (
         <CreateTicket
           selectedTicket={selectedTicket}
           handleCloseModal={() => handleCloseModal()}
+          ticketAction={ticketAction}
         />
       )}
     </div>

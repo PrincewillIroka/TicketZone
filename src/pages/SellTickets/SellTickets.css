@@ -131,7 +131,7 @@ input[type="date"] {
 }
 
 .item-right .day,
-.item-left .event {
+.item-title {
   color: #555;
   font-size: 20px;
   margin-bottom: 9px;
@@ -148,10 +148,31 @@ input[type="date"] {
   border-left: 3px dotted #999;
 }
 
-.item-left .title {
+.item-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.item-description {
   color: #111;
   font-size: 34px;
   margin-bottom: 12px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.item-venue {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 
 .sce,
