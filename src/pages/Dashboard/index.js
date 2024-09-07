@@ -153,7 +153,9 @@ function Dashboard() {
                         </div>
                         <div className="single-ticket-row">
                           <span className="single-ticket-tag">Venue:</span>
-                          <span className="">{venue}</span>
+                          <span className="single-ticket-title" title={venue}>
+                            {venue}
+                          </span>
                         </div>
                         <div className="single-ticket-row">
                           <span className="single-ticket-tag">Price:</span>

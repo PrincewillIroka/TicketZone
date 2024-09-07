@@ -29,7 +29,9 @@ function EventCard({ event }) {
         <span>&#8226;</span>
         <span className="explore-item-time">8:30pm</span>
       </div>
-      <div className="explore-item-venue">{venue}</div>
+      <div className="explore-item-venue" title={venue}>
+        {venue}
+      </div>
     </div>
   );
 }
