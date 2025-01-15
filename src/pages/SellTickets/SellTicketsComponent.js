@@ -3,12 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 import { LuBadgeCheck } from "react-icons/lu";
-import { createEvent, getCategories } from "services/eventServices";
+import {
+  createEvent,
+  getCategories,
+  updateEvent,
+} from "services/eventServices";
 import { useStateValue } from "store/stateProvider";
 import { MONTHS_OF_THE_YEAR } from "utils";
 import "./SellTickets.css";
 
-function SellTicketsComponent() {
+function SellTicketsComponent({ actionType }) {
   const navigate = useNavigate();
   const { state = {}, dispatch } = useStateValue();
   let { homePage = {}, user = {} } = state;
@@ -145,7 +149,7 @@ function SellTicketsComponent() {
       if (!ownerId) {
         localStorage.setItem("temporaryTicket", JSON.stringify(obj));
         navigate("/login");
-      } else {
+      } else if (actionType) {
         obj.ownerId = ownerId;
         obj.initialQuantityAvailable = quantity;
         setIsCreatingEvent(true);
@@ -153,21 +157,40 @@ function SellTicketsComponent() {
           type: "USER_ADD_TEMP_TICKET",
           payload: {},
         });
-        await createEvent(obj)
-          .then((response) => {
-            if (response.success) {
-              setIsSuccessful(true);
-            }
-            setIsCreatingEvent(false);
-            setTimeout(() => {
-              setIsSuccessful(false);
-            }, 2500);
-            handleClearFields();
-          })
-          .catch((error) => {
-            console.error(error);
-            setIsCreatingEvent(false);
-          });
+
+        if (actionType === "Create Ticket") {
+          await createEvent(obj)
+            .then((response) => {
+              if (response.success) {
+                setIsSuccessful(true);
+              }
+              setIsCreatingEvent(false);
+              setTimeout(() => {
+                setIsSuccessful(false);
+              }, 2500);
+              handleClearFields();
+            })
+            .catch((error) => {
+              console.error(error);
+              setIsCreatingEvent(false);
+            });
+        } else if (actionType === "Edit Ticket") {
+          await updateEvent(obj)
+            .then((response) => {
+              if (response.success) {
+                setIsSuccessful(true);
+              }
+              setIsCreatingEvent(false);
+              setTimeout(() => {
+                setIsSuccessful(false);
+              }, 2500);
+              handleClearFields();
+            })
+            .catch((error) => {
+              console.error(error);
+              setIsCreatingEvent(false);
+            });
+        }
       }
     }
   };
@@ -288,7 +311,11 @@ function SellTicketsComponent() {
             }`}
           onClick={(e) => handleContinue(e)}
         >
-          {isLoading ? "Please wait..." : "Create Ticket(s)"}
+          {isLoading
+            ? "Please wait..."
+            : actionType === "Edit Ticket"
+            ? "Update Ticket(s)"
+            : "Create Ticket(s)"}
         </button>
       </form>
       <div className="sell-tickets-col-2">

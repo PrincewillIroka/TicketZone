@@ -20,7 +20,7 @@ function EditTicket({ handleCloseModal }) {
           </span>
         </div>
         <div className="edit-ticket-container">
-          <SellTicketsComponent />
+          <SellTicketsComponent actionType="Edit Ticket" />
         </div>
       </div>
     </div>

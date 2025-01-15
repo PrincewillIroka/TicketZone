@@ -41,7 +41,7 @@ function HowItWorks(props) {
       <Header />
       <div className="how-it-works-container">
         <div className="how-it-works">
-          <h2 className="title">How It Works</h2>
+          <h2 className="how-it-works-title">How It Works</h2>
           <div className="steps-container">
             {steps.map((step, index) => (
               <div key={index} className="step-card">

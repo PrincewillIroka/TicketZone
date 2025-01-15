@@ -6,6 +6,17 @@
   background-position: center;
 }
 
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .banner-content {
   height: 100%;
   display: flex;
@@ -20,6 +31,7 @@
   font-size: 3rem;
   width: 70%;
   margin-bottom: 25px;
+  animation-name: fadeInDown;
 }
 
 .banner-subtitle {
@@ -120,25 +132,29 @@
 }
 
 .explore-items {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  /* justify-content: space-between; */
-  column-gap: 3%;
+  display: flex;
+  flex-wrap: wrap;
+  /* grid-template-columns: repeat(4, 1fr); */
+  justify-content: space-between;
+  /* column-gap: 3%; */
   row-gap: 40px;
   min-height: 60vh;
 }
 
 .explore-item {
   height: 320px;
-  /* border: 1px solid #ccc; */
+  border: 1px solid #eeeeee;
   border-radius: 3px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
-    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; */
   cursor: pointer;
+  width: 22.75%;
 }
 
 .explore-item:hover {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  -moz-box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.04);
 }
 
 .explore-item-wallpaper {
@@ -181,6 +197,9 @@
 .explore-item-venue {
   padding: 0 7px;
   opacity: 0.5;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .explore-more {

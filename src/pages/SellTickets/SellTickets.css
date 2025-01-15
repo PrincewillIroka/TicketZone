@@ -206,7 +206,7 @@ input[type="date"] {
 
 .btn-sell-ticket-enabled {
   background-color: #f61253;
-  cursor: default;
+  cursor: pointer;
 }
 
 .btn-sell-ticket-enabled:hover {
