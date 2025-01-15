@@ -168,15 +168,11 @@ function Dashboard() {
                           <button
                             className="single-ticket-btn single-ticket-btn-view"
                             onClick={() => handleSelectTicket(ticket, "View")}
-                          >
-                            View
-                          </button>
+                          ></button>
                           <button
                             className="single-ticket-btn single-ticket-btn-edit"
                             onClick={() => handleSelectTicket(ticket, "Edit")}
-                          >
-                            Edit
-                          </button>
+                          ></button>
                         </div>
                       </div>
                     );
