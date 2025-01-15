@@ -150,6 +150,14 @@
   margin-right: 5px;
 }
 
+.single-ticket-title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
 .single-ticket-btns-wrapper {
   display: flex;
   justify-content: space-between;

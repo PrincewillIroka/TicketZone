@@ -153,7 +153,9 @@ function Dashboard() {
                         </div>
                         <div className="single-ticket-row">
                           <span className="single-ticket-tag">Venue:</span>
-                          <span className="">{venue}</span>
+                          <span className="single-ticket-title" title={venue}>
+                            {venue}
+                          </span>
                         </div>
                         <div className="single-ticket-row">
                           <span className="single-ticket-tag">Price:</span>
@@ -166,15 +168,11 @@ function Dashboard() {
                           <button
                             className="single-ticket-btn single-ticket-btn-view"
                             onClick={() => handleSelectTicket(ticket, "View")}
-                          >
-                            View
-                          </button>
+                          ></button>
                           <button
                             className="single-ticket-btn single-ticket-btn-edit"
                             onClick={() => handleSelectTicket(ticket, "Edit")}
-                          >
-                            Edit
-                          </button>
+                          ></button>
                         </div>
                       </div>
                     );
@@ -194,12 +192,14 @@ function Dashboard() {
         <EditTicket
           selectedTicket={selectedTicket}
           handleCloseModal={() => handleCloseModal()}
+          ticketAction={ticketAction}
         />
       )}
       {ticketAction === "Create" && (
         <CreateTicket
           selectedTicket={selectedTicket}
           handleCloseModal={() => handleCloseModal()}
+          ticketAction={ticketAction}
         />
       )}
     </div>

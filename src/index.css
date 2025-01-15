@@ -72,6 +72,7 @@ input {
 
 .explore-item-none {
   height: 320px;
+  padding: 30px;
 }
 
 /* Media queries */

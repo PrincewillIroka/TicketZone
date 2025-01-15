@@ -3,7 +3,7 @@ import SellTicketsComponent from "pages/SellTickets/SellTicketsComponent";
 import "../Modals.css";
 import "./CreateTicket.css";
 
-function CreateTicket({ selectedTicket, handleCloseModal }) {
+function CreateTicket({ selectedTicket, handleCloseModal, ticketAction }) {
   return (
     <div className="modal">
       <div className="create-ticket-modal-content">
@@ -14,7 +14,7 @@ function CreateTicket({ selectedTicket, handleCloseModal }) {
           </span>
         </div>
         <div className="create-ticket-container">
-          <SellTicketsComponent />
+          <SellTicketsComponent ticketAction={ticketAction} />
         </div>
       </div>
     </div>
